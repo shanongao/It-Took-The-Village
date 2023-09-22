@@ -1,0 +1,5 @@
+# ignore files
+Library/
+Logs/
+.vscode/
+.DS_Store
