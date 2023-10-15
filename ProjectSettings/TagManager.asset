@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Shield
   - Weapon
+  - TutorialNPC
   layers:
   - Default
   - TransparentFX
