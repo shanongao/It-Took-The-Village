@@ -30,6 +30,6 @@ public class PlayerTutorialInteraction : MonoBehaviour
 
     private void DisplayTutorialInstructions()
     {
-        Debug.Log("Find your sword! Press space to kill enemies.");
+        Debug.Log("Find your sword! Press space to kill enemies. Open Chest with E");
     }
 }
