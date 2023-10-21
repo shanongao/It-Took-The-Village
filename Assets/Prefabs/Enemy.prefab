@@ -196,9 +196,8 @@ MonoBehaviour:
   timer: 5
   enemyBullet: {fileID: 1608692533602591098}
   spawnPoint: {fileID: 7918230486225098806}
-  player: {fileID: 0}
   bulletSpeed: 1000
-  detectionDistance: 10
+  detectionDistance: 5
 --- !u!65 &7918230487078176199
 BoxCollider:
   m_ObjectHideFlags: 0
