@@ -125,9 +125,6 @@ using UnityEngine.InputSystem;
         private bool _sprint;
         private bool _jump;
 
-        private Vector3 _lastPosition;
-        private Quaternion _lastRotation;
-
         private const float _threshold = 0.01f;
 
         private bool IsCurrentDeviceMouse
@@ -267,14 +264,7 @@ using UnityEngine.InputSystem;
         public void OnJump(InputAction.CallbackContext context)
         {
             _jump = context.ReadValueAsButton();
-            // if (_animator.GetBool("isWalking"))
-            // {
-            //     _animator.Play("ForwardJump");
-            // }
-            // else
-            // {
-                _animator.Play("Jump");
-            // }
+            _animator.Play("Jump");
         }
 
         private void Move()
@@ -295,21 +285,22 @@ using UnityEngine.InputSystem;
             float inputMagnitude = 1f;
 
             // accelerate or decelerate to target speed
-            if (currentHorizontalSpeed < targetSpeed - speedOffset ||
-                currentHorizontalSpeed > targetSpeed + speedOffset)
-            {
-                // creates curved result rather than a linear one giving a more organic speed change
-                // note T in Lerp is clamped, so we don't need to clamp our speed
-                _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
-                    Time.deltaTime * SpeedChangeRate);
+            // if (currentHorizontalSpeed < targetSpeed - speedOffset ||
+            //     currentHorizontalSpeed > targetSpeed + speedOffset)
+            // {
+            //     // creates curved result rather than a linear one giving a more organic speed change
+            //     // note T in Lerp is clamped, so we don't need to clamp our speed
+            //     _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
+            //         Time.deltaTime * SpeedChangeRate);
 
-                // round speed to 3 decimal places
-                _speed = Mathf.Round(_speed * 1000f) / 1000f;
-            }
-            else
-            {
-                _speed = targetSpeed;
-            }
+            //     // round speed to 3 decimal places
+            //     _speed = Mathf.Round(_speed * 1000f) / 1000f;
+            // }
+            // else
+            // {
+            //     _speed = targetSpeed;
+            // }
+            _speed = targetSpeed;
 
             _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
             if (_animationBlend < 0.01f) _animationBlend = 0f;
@@ -329,7 +320,6 @@ using UnityEngine.InputSystem;
                 // rotate to face input direction relative to camera position
                 transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
             }
-
 
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
