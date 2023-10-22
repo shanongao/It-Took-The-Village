@@ -99,7 +99,6 @@ using UnityEngine.InputSystem;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
         private bool _blocking = false;
-        private bool _idle = true;
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
@@ -261,10 +260,43 @@ using UnityEngine.InputSystem;
 			_look = context.ReadValue<Vector2>();
 		}
 
+        public void OnSnapCamera(InputAction.CallbackContext context)
+		{	
+
+		}
+
         public void OnJump(InputAction.CallbackContext context)
         {
             _jump = context.ReadValueAsButton();
             _animator.Play("Jump");
+        }
+
+        public void OnBlock(InputAction.CallbackContext context)
+        {
+            _blocking = context.ReadValueAsButton();
+            if (_blocking)
+            {
+                _animator.SetBool("isBlocking", true);
+            }
+            else
+            {
+                _animator.SetBool("isBlocking", false);
+            }
+        }
+
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                if (_animator.GetBool("isWalking"))
+                {
+                    _animator.Play("DownSwingMoving");
+                }
+                else
+                {
+                    _animator.Play("DownSwing");
+                }
+            }
         }
 
         private void Move()
@@ -328,7 +360,8 @@ using UnityEngine.InputSystem;
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
             // update animator if using character
-            _animator.SetFloat(_animIDSpeed, _animationBlend);
+            // _animator.SetFloat(_animIDSpeed, _animationBlend);
+            _animator.SetFloat(_animIDSpeed, _speed);
             _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
 
             CinemachineCameraTarget.transform.position = transform.position + CameraPosition;
@@ -363,7 +396,6 @@ using UnityEngine.InputSystem;
 
         private void JumpAndGravity()
         {
-            Debug.Log(Grounded);
             if (Grounded)
             {
                 // reset the fall timeout timer

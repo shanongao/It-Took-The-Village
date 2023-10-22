@@ -1,5 +1,5 @@
 {
-    "name": "StarterAssets",
+    "name": "PlayerInputActions",
     "maps": [
         {
             "name": "Player",
@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "AttackSword",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "14cceee2-7fbe-4246-a777-b80a801e3867",
                     "expectedControlType": "Button",
@@ -54,6 +54,15 @@
                     "name": "Block",
                     "type": "Button",
                     "id": "81bddda1-f2a2-4971-bd87-ae0a471fb786",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SnapCamera",
+                    "type": "Button",
+                    "id": "f4df1f8b-2f6e-411a-b598-4153fb3cbfb2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -244,7 +253,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "AttackSword",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -255,7 +264,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "AttackSword",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -267,6 +276,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bb170a95-d3d8-4e72-9e93-03dd82c8748a",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "SnapCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
