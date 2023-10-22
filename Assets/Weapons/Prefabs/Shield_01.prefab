@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2719369802690551328}
   - component: {fileID: 169398615064423146}
   - component: {fileID: 1042300017017112008}
+  - component: {fileID: 3512100656703030571}
   m_Layer: 0
   m_Name: Shield_01
   m_TagString: Shield
@@ -93,8 +94,21 @@ MeshCollider:
   m_GameObject: {fileID: 1826543164433107775}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2752788004724228794, guid: 5cac7ad8464f8e944b859c007daf9617, type: 3}
+--- !u!65 &3512100656703030571
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826543164433107775}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.73, y: 1, z: 0.12734514}
+  m_Center: {x: 0.000026027616, y: -0.08040425, z: 0.09}

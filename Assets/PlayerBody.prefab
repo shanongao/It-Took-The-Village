@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 2120984334618918217}
   - component: {fileID: 2120984334618918228}
   - component: {fileID: 1274001726972129506}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerBody
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -491,8 +491,8 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274001726972129505}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -2882,11 +2882,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Convex
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1042300017017112008, guid: 637a26567ae08674796cb9ce5c55c4d8,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1042300017017112008, guid: 637a26567ae08674796cb9ce5c55c4d8,
         type: 3}

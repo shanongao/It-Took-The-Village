@@ -507,11 +507,17 @@ using UnityEngine.InputSystem;
         {
             if (other.gameObject.CompareTag("Shield"))
             {
+                Destroy(other.gameObject);
                 return;
             }
             if (other.gameObject.CompareTag("Bullet"))
             {
-                TakeDamage(5);
+                if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Block") && 
+                    !_animator.GetCurrentAnimatorStateInfo(1).IsName("Block"))
+                {
+                    TakeDamage(5);
+                    Destroy(other.gameObject);
+                }
             }
         }
 
