@@ -15,13 +15,14 @@ public class EnemyController : MonoBehaviour
     public float bulletSpeed = 100;
     public float detectionDistance = 5f;
 
-    private Vector3 playerPostion;
-    private GameObject player;
+    private Vector3 _playerPosition;
+    private GameObject _player;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        _player = GameObject.FindWithTag("Player");
+        bulletTime = timer;
     }
 
     // Update is called once per frame
@@ -33,7 +34,7 @@ public class EnemyController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // if (other.gameObject.CompareTag("Player")) {
-        //     transform.LookAt(player);
+        //     transform.LookAt(_player);
         //     ShootAtPlayer();
         // }
 
@@ -45,9 +46,9 @@ public class EnemyController : MonoBehaviour
 
     void DetectPlayer()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) <= detectionDistance)
+        if (Vector3.Distance(_player.transform.position, transform.position) <= detectionDistance)
         {
-            transform.LookAt(player.transform);
+            transform.LookAt(_player.transform);
             ShootAtPlayer();
         }
     }
@@ -57,11 +58,11 @@ public class EnemyController : MonoBehaviour
         bulletTime -= Time.deltaTime;
         if (bulletTime > 0) return;
         bulletTime = timer;
-
+        
         GameObject bulletObj = Instantiate(enemyBullet, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
         Rigidbody bulletRig = bulletObj.GetComponent<Rigidbody>();
 
-        Vector3 playerPostion = player.transform.position;
+        Vector3 _playerPosition = _player.transform.position;
 
         bulletRig.AddForce(bulletRig.transform.forward * bulletSpeed);
         Destroy(bulletObj, 5f);
