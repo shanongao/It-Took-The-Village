@@ -514,18 +514,29 @@ using UnityEngine.InputSystem;
 
         void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Shield"))
-            {
-                Destroy(other.gameObject);
-                return;
-            }
             if (other.gameObject.CompareTag("Bullet"))
             {
-                if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Block") && 
-                    !_animator.GetCurrentAnimatorStateInfo(1).IsName("Block"))
+                if (_blocking)
+                {
+                    Destroy(other.gameObject);
+                    return;
+                }
+                else
                 {
                     TakeDamage(5);
                     Destroy(other.gameObject);
+                }
+            }
+
+            if (other.gameObject.CompareTag("MeleeSlime"))
+            {
+                if (_blocking)
+                {
+                    return;
+                }
+                else
+                {
+                    TakeDamage(5);
                 }
             }
         }
