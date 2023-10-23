@@ -412,22 +412,15 @@ using UnityEngine.InputSystem;
                 }
 
                 // Jump
-                if (_jump && _jumpTimeoutDelta <= 0.0f)
-                {
-                    // the square root of H * -2 * G = how much velocity needed to reach desired height
-                    _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+                // if (_jump && _jumpTimeoutDelta <= 0.0f)
+                // {
+                //     // the square root of H * -2 * G = how much velocity needed to reach desired height
+                //     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
-                    // update animator if using character
-                    _animator.SetBool(_animIDJump, true);
-                    // if (_animator.GetBool("isWalking"))
-                    // {
-                    //     _animator.Play("ForwardJump");
-                    // }
-                    // else
-                    // {
-                    //     _animator.Play("Jump");
-                    // }
-                }
+                //     // update animator if using character
+                //     _animator.SetBool(_animIDJump, true);
+                //     _animator.Play("Jump");
+                // }
 
                 // jump timeout
                 if (_jumpTimeoutDelta >= 0.0f)
@@ -531,6 +524,7 @@ using UnityEngine.InputSystem;
             if (currentHealth <= 0)
             {
                 loseTextObject.SetActive(true);
+                _animator.Play("Die");
             }
             countText.text = "HP: " + currentHealth.ToString();
         }
