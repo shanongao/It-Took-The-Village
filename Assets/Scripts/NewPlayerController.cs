@@ -64,7 +64,7 @@ using UnityEngine.InputSystem;
         [Header("Cinemachine")]
         [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
         public GameObject CinemachineCameraTarget;
-        public Vector3 CameraPosition;
+        public GameObject DefaultCamera;
 
         [Tooltip("How far in degrees can you move the camera up")]
         public float TopClamp = 70.0f;
@@ -90,6 +90,7 @@ using UnityEngine.InputSystem;
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
+        private Vector3 _relativeCameraPosition;
 
         // player
         private float _speed;
@@ -123,6 +124,7 @@ using UnityEngine.InputSystem;
         private Vector2 _look;
         private bool _sprint;
         private bool _jump;
+        private bool _snap = false;
 
         private const float _threshold = 0.01f;
 
@@ -155,6 +157,7 @@ using UnityEngine.InputSystem;
             loseTextObject.SetActive(false);
 
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
+            _relativeCameraPosition = transform.InverseTransformPoint(CinemachineCameraTarget.transform.position);
             
             _animator = GetComponent<Animator>();
             _controller = GetComponent<CharacterController>();
@@ -184,6 +187,12 @@ using UnityEngine.InputSystem;
         private void LateUpdate()
         {
             CameraRotation();
+            if (_snap)
+            {
+                CinemachineCameraTarget.transform.position = DefaultCamera.transform.position;
+                CinemachineCameraTarget.transform.rotation = DefaultCamera.transform.rotation;
+                _snap = false;
+            }
         }
 
         private void AssignAnimationIDs()
@@ -227,6 +236,7 @@ using UnityEngine.InputSystem;
             // Cinemachine will follow this target
             CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
                 _cinemachineTargetYaw, 0.0f);
+            // CinemachineCameraTarget.transform.RotateAround(transform.position, Vector3.up, _look.x);
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -262,7 +272,10 @@ using UnityEngine.InputSystem;
 
         public void OnSnapCamera(InputAction.CallbackContext context)
 		{	
-
+            if (context.performed)
+            {
+                _snap = true;
+            }
 		}
 
         public void OnJump(InputAction.CallbackContext context)
@@ -364,7 +377,10 @@ using UnityEngine.InputSystem;
             _animator.SetFloat(_animIDSpeed, _speed);
             _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
 
-            CinemachineCameraTarget.transform.position = transform.position + CameraPosition;
+            GameObject temp = new GameObject();
+            temp.transform.position = transform.position;
+            temp.transform.rotation = CinemachineCameraTarget.transform.rotation;
+            CinemachineCameraTarget.transform.position = temp.transform.TransformPoint(_relativeCameraPosition);
         }
 
         private void Action()

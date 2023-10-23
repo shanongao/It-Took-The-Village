@@ -9,6 +9,7 @@ TagManager:
   - Shield
   - Weapon
   - TutorialNPC
+  - NPC
   layers:
   - Default
   - TransparentFX
