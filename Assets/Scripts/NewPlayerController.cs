@@ -30,6 +30,15 @@ using UnityEngine.InputSystem;
         [Tooltip("Acceleration and deceleration")]
         public float SpeedChangeRate = 10.0f;
 
+        [Tooltip("Location to equip sword")]
+        public Transform SwordEquip;
+        [Tooltip("Location to equip ax")]
+        public Transform AxEquip;
+        [Tooltip("Location to equip hammer")]
+        public Transform HammerEquip;
+        [Tooltip("Location to equip shield")]
+        public Transform ShieldEquip;
+
         public AudioClip LandingAudioClip;
         public AudioClip[] FootstepAudioClips;
         [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
