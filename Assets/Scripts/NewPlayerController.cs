@@ -31,13 +31,12 @@ using UnityEngine.InputSystem;
         public float SpeedChangeRate = 10.0f;
 
         [Tooltip("Location to equip sword")]
-        public Transform SwordEquip;
+        public GameObject SwordHolder;
         [Tooltip("Location to equip ax")]
-        public Transform AxEquip;
+        public GameObject AxeHolder;
         [Tooltip("Location to equip hammer")]
-        public Transform HammerEquip;
+        public GameObject HammerHolder;
         [Tooltip("Location to equip shield")]
-        public Transform ShieldEquip;
         public GameObject ShieldHolder;
 
         public AudioClip LandingAudioClip;
@@ -324,6 +323,36 @@ using UnityEngine.InputSystem;
                 {
                     _animator.Play("DownSwing");
                 }
+            }
+        }
+
+        public void OnEquipSword(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                SwordHolder.transform.GetChild(0).gameObject.SetActive(true);
+                HammerHolder.transform.GetChild(0).gameObject.SetActive(false);
+                AxeHolder.transform.GetChild(0).gameObject.SetActive(false);
+            }
+        }
+
+        public void OnEquipHammer(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                SwordHolder.transform.GetChild(0).gameObject.SetActive(false);
+                HammerHolder.transform.GetChild(0).gameObject.SetActive(true);
+                AxeHolder.transform.GetChild(0).gameObject.SetActive(false);
+            }
+        }
+
+        public void OnEquipAxe(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                SwordHolder.transform.GetChild(0).gameObject.SetActive(false);
+                HammerHolder.transform.GetChild(0).gameObject.SetActive(false);
+                AxeHolder.transform.GetChild(0).gameObject.SetActive(true);
             }
         }
 
