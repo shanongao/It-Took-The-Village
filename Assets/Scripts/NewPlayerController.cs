@@ -38,6 +38,7 @@ using UnityEngine.InputSystem;
         public Transform HammerEquip;
         [Tooltip("Location to equip shield")]
         public Transform ShieldEquip;
+        public GameObject ShieldHolder;
 
         public AudioClip LandingAudioClip;
         public AudioClip[] FootstepAudioClips;
@@ -135,6 +136,7 @@ using UnityEngine.InputSystem;
         private bool _sprint;
         private bool _jump;
         private bool _snap = false;
+        private BoxCollider _shieldCollider;
 
         private const float _threshold = 0.01f;
 
@@ -172,6 +174,8 @@ using UnityEngine.InputSystem;
             _animator = GetComponent<Animator>();
             _controller = GetComponent<CharacterController>();
             _rbody = GetComponent<Rigidbody>();
+            _shieldCollider = ShieldHolder.GetComponent<BoxCollider>();
+
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
             _playerInput = GetComponent<PlayerInput>();
 #else
@@ -506,33 +510,18 @@ using UnityEngine.InputSystem;
             int damage = 0;
             if (other.gameObject.CompareTag("EnemyProjectile"))
             {
-                if (_blocking)
-                {
-                    Destroy(other.gameObject);
-                    return;
-                }
-                else
-                {
-                    EnemyAttackPower attack = other.gameObject.GetComponent<EnemyAttackPower>();
-                    damage = attack.Damage;
-                    Destroy(other.gameObject);
-                }
+                EnemyAttackPower attack = other.gameObject.GetComponent<EnemyAttackPower>();
+                damage = attack.Damage;
+                Destroy(other.gameObject);
             }
 
             if (other.gameObject.CompareTag("EnemyMelee"))
             {
-                if (_blocking)
-                {
-                    return;
-                }
-                else
-                {
-                    EnemyAttackPower attack = other.gameObject.GetComponent<EnemyAttackPower>();
-                    damage = attack.Damage;
-                }
+                EnemyAttackPower attack = other.gameObject.GetComponent<EnemyAttackPower>();
+                damage = attack.Damage;
             }
 
-            if (damage > 0 && _damageTimeout <= 0)
+            if (_damageTimeout <= 0)
             {
                 TakeDamage(damage);
                 _damageTimeout = 0.5f;
@@ -552,5 +541,15 @@ using UnityEngine.InputSystem;
                 _animator.Play("Die");
             }
             countText.text = "HP: " + currentHealth.ToString();
+        }
+
+        void ShieldUp()
+        {
+            _shieldCollider.enabled = true;
+        }
+
+        void ShieldDown()
+        {
+            _shieldCollider.enabled = false;
         }
     }

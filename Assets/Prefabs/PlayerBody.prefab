@@ -502,6 +502,7 @@ MonoBehaviour:
   AxEquip: {fileID: 5465292463658801452}
   HammerEquip: {fileID: 8447665687599835713}
   ShieldEquip: {fileID: 2400116560993546455}
+  ShieldHolder: {fileID: 1862766483427184842}
   LandingAudioClip: {fileID: 0}
   FootstepAudioClips: []
   FootstepAudioVolume: 0.5
@@ -648,9 +649,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2400116560993546455}
+  - component: {fileID: 601698815}
   m_Layer: 8
   m_Name: ShieldHolder
-  m_TagString: Untagged
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -671,6 +673,19 @@ Transform:
   m_Father: {fileID: 8914875914677351241}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
+--- !u!65 &601698815
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862766483427184842}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.03, y: 1.61, z: 0.34}
+  m_Center: {x: 0.00002602762, y: -0.08040425, z: 0.22}
 --- !u!1 &2112141026796536649
 GameObject:
   m_ObjectHideFlags: 0
@@ -3002,7 +3017,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3512100656703030571, guid: 637a26567ae08674796cb9ce5c55c4d8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 637a26567ae08674796cb9ce5c55c4d8, type: 3}
 --- !u!4 &4771222245356609382 stripped
 Transform:
