@@ -3,6 +3,17 @@ using UnityEngine;
 public class PlayerTutorialInteraction : MonoBehaviour
 {
     private bool isInTutorialZone = false;
+    private DialogBoxController dialogBoxController;
+
+    private void Awake()
+    {
+        // Find and assign the DialogBoxController component
+        dialogBoxController = FindObjectOfType<DialogBoxController>();
+        if (dialogBoxController == null)
+        {
+            Debug.LogError("DialogBoxController not found in the scene!");
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,6 +28,10 @@ public class PlayerTutorialInteraction : MonoBehaviour
         if (other.CompareTag("TutorialNPC"))
         {
             isInTutorialZone = false;
+            if (dialogBoxController != null)  // Check if dialogBoxController is not null before using it
+            {
+                dialogBoxController.HideDialog();  // Hide dialog when player leaves the tutorial zone
+            }
         }
     }
 
@@ -30,6 +45,9 @@ public class PlayerTutorialInteraction : MonoBehaviour
 
     private void DisplayTutorialInstructions()
     {
-        Debug.Log("Find your sword! Press space to kill enemies. Open Chest with E");
+        if (dialogBoxController != null)  // Check if dialogBoxController is not null before using it
+        {
+            dialogBoxController.ShowDialog("Find your sword! Press space to kill enemies. Open Chest with E");
+        }
     }
 }
