@@ -535,9 +535,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4169660816051679815}
   - component: {fileID: 2875785272740469568}
+  - component: {fileID: 2720348040471555170}
   m_Layer: 10
   m_Name: SlimeMelee
-  m_TagString: MeleeSlime
+  m_TagString: EnemyMelee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -568,5 +569,18 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
   m_Center: {x: 0, y: 0.46, z: 0}
+--- !u!114 &2720348040471555170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7947418946801352291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88875587c44c4ceab977fd6baf379af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 5

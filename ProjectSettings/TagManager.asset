@@ -12,6 +12,8 @@ TagManager:
   - NPC
   - Melee
   - MeleeSlime
+  - EnemyMelee
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

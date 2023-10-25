@@ -109,6 +109,7 @@ using UnityEngine.InputSystem;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
         private bool _blocking = false;
+        private float _damageTimeout = 0f;
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
@@ -202,6 +203,7 @@ using UnityEngine.InputSystem;
                 CinemachineCameraTarget.transform.rotation = DefaultCamera.transform.rotation;
                 _snap = false;
             }
+            _damageTimeout -= Time.deltaTime;
         }
 
         private void AssignAnimationIDs()
@@ -335,7 +337,7 @@ using UnityEngine.InputSystem;
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
-            float speedOffset = 0.1f;
+            // float speedOffset = 0.1f;
             float inputMagnitude = 1f;
 
             // accelerate or decelerate to target speed
@@ -394,29 +396,7 @@ using UnityEngine.InputSystem;
 
         private void Action()
         {
-            // // sword swing
-            // if (_input.attackSword)
-            // {
-            //     _animator.Play("SwordSwing");
-            //     _input.attackSword = false;
-            // }
-
-            // // block
-            // if (_input.block)
-            // {
-            //     if (!_blocking)
-            //     {
-            //         _animator.Play("Block");
-            //         _blocking = true;
-            //         _input.block = false;
-            //     }
-            //     else
-            //     {
-            //         _animator.Play("Unblock");
-            //         _blocking = false;
-            //         _input.block = false;
-            //     }
-            // }
+            
         }
 
         private void JumpAndGravity()
@@ -523,7 +503,8 @@ using UnityEngine.InputSystem;
 
         void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Bullet"))
+            int damage = 0;
+            if (other.gameObject.CompareTag("EnemyProjectile"))
             {
                 if (_blocking)
                 {
@@ -532,12 +513,13 @@ using UnityEngine.InputSystem;
                 }
                 else
                 {
-                    TakeDamage(5);
+                    EnemyAttackPower attack = other.gameObject.GetComponent<EnemyAttackPower>();
+                    damage = attack.Damage;
                     Destroy(other.gameObject);
                 }
             }
 
-            if (other.gameObject.CompareTag("MeleeSlime"))
+            if (other.gameObject.CompareTag("EnemyMelee"))
             {
                 if (_blocking)
                 {
@@ -545,8 +527,15 @@ using UnityEngine.InputSystem;
                 }
                 else
                 {
-                    TakeDamage(5);
+                    EnemyAttackPower attack = other.gameObject.GetComponent<EnemyAttackPower>();
+                    damage = attack.Damage;
                 }
+            }
+
+            if (damage > 0 && _damageTimeout <= 0)
+            {
+                TakeDamage(damage);
+                _damageTimeout = 0.5f;
             }
         }
 

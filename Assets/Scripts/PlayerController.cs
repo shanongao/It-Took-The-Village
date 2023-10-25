@@ -95,7 +95,6 @@ using UnityEngine.InputSystem;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
         private bool _blocking = false;
-        private bool _idle = true;
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
