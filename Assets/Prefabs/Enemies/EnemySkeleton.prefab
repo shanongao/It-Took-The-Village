@@ -3256,6 +3256,12 @@ MonoBehaviour:
   damage: 10
   _nav: {fileID: 0}
   meleeCollider: {fileID: 32631867}
+  AudioVolume: 1
+  VerticalAxeSound: {fileID: 8300000, guid: 94c93377631b5c14e959b951b435b46a, type: 3}
+  HorizontalAxeSound: {fileID: 8300000, guid: 1d8cc3c188ec572489b65bbcf098ddd1, type: 3}
+  OnHitSound: {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
+  DeathSound: {fileID: 8300000, guid: 566d2ea6240b489479a6e9fd608c2621, type: 3}
+  FootstepSound: {fileID: 8300000, guid: 14e8a8d2158bec840b56c54f5266e692, type: 3}
 --- !u!1 &1975428699739996661
 GameObject:
   m_ObjectHideFlags: 0

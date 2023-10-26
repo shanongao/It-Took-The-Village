@@ -10,6 +10,13 @@ public class EnemySlimeController : MonoBehaviour
     public int damage = 5;
     public NavMeshAgent _nav;
     public GameObject meleeCollider;
+    [Range(0, 5)] public float FootstepVolume = 2f;
+    public AudioClip FootstepSound;
+
+    [Range(0, 1)] public float AudioVolume = 0.75f;
+    public AudioClip AttackSound;
+    public AudioClip OnHitSound;
+    public AudioClip DeathSound;
 
     private Vector3 _playerPosition;
     private GameObject _player;
@@ -70,6 +77,7 @@ public class EnemySlimeController : MonoBehaviour
     void MeleeDamage()
     {
         meleeCollider.SetActive(true);
+        AudioSource.PlayClipAtPoint(AttackSound, transform.position, AudioVolume);
     }
 
     void EndMeleeDamage()
@@ -85,6 +93,7 @@ public class EnemySlimeController : MonoBehaviour
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("DownSwing") || 
                 playerAnimator.GetCurrentAnimatorStateInfo(1).IsName("DownSwingMoving"))
             {
+                AudioSource.PlayClipAtPoint(OnHitSound, transform.position, AudioVolume);
                 _alive = false;
                 _animator.Play("Die");
             }
@@ -94,5 +103,15 @@ public class EnemySlimeController : MonoBehaviour
     void DestroyEnemy()
     {
         Destroy(this.gameObject);
+    }
+
+    void OnDeath()
+    {
+        AudioSource.PlayClipAtPoint(DeathSound, transform.position, AudioVolume);
+    }
+
+    void OnBounce()
+    {
+        AudioSource.PlayClipAtPoint(FootstepSound, transform.position, AudioVolume);
     }
 }

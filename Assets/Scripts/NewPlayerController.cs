@@ -39,9 +39,13 @@ using UnityEngine.InputSystem;
         [Tooltip("Location to equip shield")]
         public GameObject ShieldHolder;
 
+        [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
         public AudioClip LandingAudioClip;
         public AudioClip[] FootstepAudioClips;
-        [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
+        public AudioClip[] RunningFootstepAudioClips;
+        [Range(0, 1)] public float AudioVolume = 0.75f;
+        public AudioClip SwordSlashSound;
+        public AudioClip DamageSound;
 
         [Space(10)]
         [Tooltip("The height the player can jump")]
@@ -526,6 +530,18 @@ using UnityEngine.InputSystem;
             }
         }
 
+        private void OnRunningFootstep(AnimationEvent animationEvent)
+        {
+            if (animationEvent.animatorClipInfo.weight > 0.5f)
+            {
+                if (RunningFootstepAudioClips.Length > 0)
+                {
+                    var index = Random.Range(0, RunningFootstepAudioClips.Length);
+                    AudioSource.PlayClipAtPoint(RunningFootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume*1.2f);
+                }
+            }
+        }
+
         private void OnLand(AnimationEvent animationEvent)
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
@@ -552,6 +568,10 @@ using UnityEngine.InputSystem;
 
             if (_damageTimeout <= 0)
             {
+                if (damage > 0)
+                {
+                    AudioSource.PlayClipAtPoint(DamageSound, transform.TransformPoint(_controller.center), AudioVolume);
+                }
                 TakeDamage(damage);
                 _damageTimeout = 0.5f;
             }
@@ -580,5 +600,10 @@ using UnityEngine.InputSystem;
         void ShieldDown()
         {
             _shieldCollider.enabled = false;
+        }
+
+        void OnSwordSlash()
+        {
+            AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
         }
     }

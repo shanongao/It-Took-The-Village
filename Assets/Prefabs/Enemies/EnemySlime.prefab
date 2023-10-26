@@ -487,10 +487,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionDistance: 7
-  attackDistance: 1.8
+  attackDistance: 1.7
   damage: 5
   _nav: {fileID: 0}
   meleeCollider: {fileID: 7947418946801352291}
+  FootstepVolume: 2
+  FootstepSound: {fileID: 8300000, guid: 60f9efe3d97bc8f47bea1af7f7093d41, type: 3}
+  AudioVolume: 1
+  AttackSound: {fileID: 8300000, guid: fd25a15f9797641458336cccfb445343, type: 3}
+  OnHitSound: {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
+  DeathSound: {fileID: 8300000, guid: 566d2ea6240b489479a6e9fd608c2621, type: 3}
 --- !u!1 &5865916252586243460
 GameObject:
   m_ObjectHideFlags: 0

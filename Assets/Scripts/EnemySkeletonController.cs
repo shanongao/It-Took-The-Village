@@ -12,6 +12,13 @@ public class EnemySkeletonController : MonoBehaviour
     public NavMeshAgent _nav;
     public GameObject meleeCollider;
 
+    [Range(0, 5)] public float AudioVolume = 1f;
+    public AudioClip VerticalAxeSound;
+    public AudioClip HorizontalAxeSound;
+    public AudioClip OnHitSound;
+    public AudioClip DeathSound;
+    public AudioClip FootstepSound;
+
     private Vector3 _playerPosition;
     private GameObject _player;
     private Animator _animator;
@@ -87,6 +94,7 @@ public class EnemySkeletonController : MonoBehaviour
                 playerAnimator.GetCurrentAnimatorStateInfo(1).IsName("DownSwingMoving"))
             {
                 HP -= 5; // @TODO hard code damage point for now
+                AudioSource.PlayClipAtPoint(OnHitSound, transform.position, AudioVolume);
                 if (HP <= 0)
                 {
                     _alive = false;
@@ -103,5 +111,25 @@ public class EnemySkeletonController : MonoBehaviour
     void DestroyEnemy()
     {
         Destroy(this.gameObject);
+    }
+
+    void OnDeath()
+    {
+        AudioSource.PlayClipAtPoint(DeathSound, transform.position, AudioVolume);
+    }
+
+    void OnVerticalAxe()
+    {
+        AudioSource.PlayClipAtPoint(VerticalAxeSound, transform.position, AudioVolume);
+    }
+
+    void OnHorizontalAxe()
+    {
+        AudioSource.PlayClipAtPoint(HorizontalAxeSound, transform.position, AudioVolume);
+    }
+
+    void OnFootstep()
+    {
+        AudioSource.PlayClipAtPoint(FootstepSound, transform.position, AudioVolume);
     }
 }

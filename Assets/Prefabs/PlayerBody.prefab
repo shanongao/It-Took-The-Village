@@ -1841,7 +1841,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 3
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967294
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 1106563633393636324, guid: defb5ce4697b14f5f8f24210443f49ea, type: 3}
@@ -2371,6 +2371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8561011291540735436}
   - component: {fileID: 8561011291540735435}
+  - component: {fileID: 104594982}
   m_Layer: 8
   m_Name: ShieldHolder
   m_TagString: Shield
@@ -2405,8 +2406,22 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1.03, y: 1.61, z: 0.34}
-  m_Center: {x: 0.00002602762, y: -0.08040425, z: 0.22}
+  m_Size: {x: 1.03, y: 1.97, z: 0.28}
+  m_Center: {x: 0.00002602762, y: 0.14, z: 0.28}
+--- !u!114 &104594982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8561011291540735437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcee481d2e23a4278899613823292377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShieldBlockSound: {fileID: 8300000, guid: b7b5a6156961bac44a67504d42ce6fcf, type: 3}
+  AudioVolume: 1
 --- !u!1 &8569865722815609218
 GameObject:
   m_ObjectHideFlags: 0
@@ -2788,9 +2803,20 @@ MonoBehaviour:
   AxeHolder: {fileID: 8561011290863550838}
   HammerHolder: {fileID: 8561011291152531444}
   ShieldHolder: {fileID: 8561011291540735437}
-  LandingAudioClip: {fileID: 0}
-  FootstepAudioClips: []
   FootstepAudioVolume: 0.5
+  LandingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
+  FootstepAudioClips:
+  - {fileID: 8300000, guid: 72f526a6a9890f643a88e85a61c86c8a, type: 3}
+  - {fileID: 8300000, guid: 85016e0f2b01da248b9663dd49a161b0, type: 3}
+  - {fileID: 8300000, guid: 186de84b3207156479abe98f4958fed0, type: 3}
+  - {fileID: 8300000, guid: 1a91fcd19acf1e54bba0945d9f390849, type: 3}
+  RunningFootstepAudioClips:
+  - {fileID: 8300000, guid: 67c8b33e424ccdc4486edf538ab91c5a, type: 3}
+  - {fileID: 8300000, guid: 274649b0e221539409070ebf6c18918b, type: 3}
+  - {fileID: 8300000, guid: a3194b8bbc96ef84fab1f98f4b7dae3e, type: 3}
+  AudioVolume: 0.9
+  SwordSlashSound: {fileID: 8300000, guid: ad10399abb9431a40b001f8ea803e810, type: 3}
+  DamageSound: {fileID: 8300000, guid: 446dee533cec9a448b8f3df7254e64ff, type: 3}
   JumpHeight: 1.2
   Gravity: -20
   JumpTimeout: 0.5

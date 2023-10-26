@@ -475,6 +475,9 @@ MonoBehaviour:
   spawnPoint: {fileID: 6696833846195288428}
   bulletSpeed: 1000
   detectionDistance: 5
+  BulletSound: {fileID: 8300000, guid: e11a5a019377fbd4c81caa0adcb4c236, type: 3}
+  OnHitSound: {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
+  DeathSound: {fileID: 8300000, guid: 566d2ea6240b489479a6e9fd608c2621, type: 3}
 --- !u!1 &4556436253101363373
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,6 +865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88875587c44c4ceab977fd6baf379af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxDamage: 5
   Damage: 5
 --- !u!1 &8959685795415530068
 GameObject:

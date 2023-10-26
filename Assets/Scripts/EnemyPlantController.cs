@@ -11,6 +11,10 @@ public class EnemyPlantController : MonoBehaviour
     public Transform spawnPoint;
     public float bulletSpeed = 100;
     public float detectionDistance = 5f;
+    [Range(0, 1)] public float AudioVolume = 0.75f;
+    public AudioClip BulletSound;
+    public AudioClip OnHitSound;
+    public AudioClip DeathSound;
 
     private Vector3 _playerPosition;
     private GameObject _player;
@@ -36,17 +40,14 @@ public class EnemyPlantController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // if (other.gameObject.CompareTag("Player")) {
-        //     transform.LookAt(_player);
-        //     ShootAtPlayer();
-        // }
-
         if (other.gameObject.CompareTag("Weapon")) 
         {
+
             Animator playerAnimator = _player.GetComponent<Animator>();
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("DownSwing") || 
                 playerAnimator.GetCurrentAnimatorStateInfo(1).IsName("DownSwingMoving"))
             {
+                AudioSource.PlayClipAtPoint(OnHitSound, transform.position, AudioVolume);
                 _alive = false;
                 _animator.Play("Die");
             }
@@ -81,5 +82,15 @@ public class EnemyPlantController : MonoBehaviour
     void DestroyEnemy()
     {
         Destroy(this.gameObject);
+    }
+
+    void OnShootBullet()
+    {
+        AudioSource.PlayClipAtPoint(BulletSound, transform.position, AudioVolume);
+    }
+
+    void OnDeath()
+    {
+        AudioSource.PlayClipAtPoint(DeathSound, transform.position, AudioVolume);
     }
 }
