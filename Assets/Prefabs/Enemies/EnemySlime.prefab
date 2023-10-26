@@ -487,7 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionDistance: 7
-  attackDistance: 1.7
+  attackDistance: 1.5
   damage: 5
   _nav: {fileID: 0}
   meleeCollider: {fileID: 7947418946801352291}
@@ -575,8 +575,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
-  m_Center: {x: 0, y: 0.79, z: 0}
+  m_Radius: 0.49
+  m_Center: {x: 0, y: 0.73, z: 0}
 --- !u!114 &2720348040471555170
 MonoBehaviour:
   m_ObjectHideFlags: 0
