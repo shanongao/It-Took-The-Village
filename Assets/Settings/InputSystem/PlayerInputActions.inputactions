@@ -67,6 +67,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "EquipHammer",
+                    "type": "Button",
+                    "id": "36a6ceed-78e7-4a60-9bd0-b4d7bcf00967",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EquipSword",
+                    "type": "Button",
+                    "id": "42afa9df-08b8-4c73-b0f3-60cec0fd687e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EquipAxe",
+                    "type": "Button",
+                    "id": "577bc675-bd8f-4370-a7da-a62f6e6b8fb7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -276,6 +303,39 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "SnapCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aad1fa38-92f8-4c5b-9774-9c290b9b1a2a",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "EquipHammer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f9ae50db-052e-4a5f-a71b-ce0093a93220",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "EquipSword",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5021c32a-01cb-4b3e-89d6-a80c46a9cb18",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "EquipAxe",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
