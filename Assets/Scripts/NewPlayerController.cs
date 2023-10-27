@@ -30,6 +30,7 @@ using UnityEngine.InputSystem;
         [Tooltip("Acceleration and deceleration")]
         public float SpeedChangeRate = 10.0f;
 
+        public GameObject Inventory;
         [Tooltip("Location to equip sword")]
         public GameObject SwordHolder;
         [Tooltip("Location to equip ax")]
@@ -96,7 +97,7 @@ using UnityEngine.InputSystem;
         
         //UI
         public TextMeshProUGUI countText;
-        public GameObject loseTextObject;
+        public GameObject GameOverScreen;
         public int maxHealth = 100;
         public int currentHealth;
 
@@ -126,9 +127,8 @@ using UnityEngine.InputSystem;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
 
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
         private PlayerInput _playerInput;
-#endif
+
         private Animator _animator;
         private Rigidbody _rbody;
         private CharacterController _controller;
@@ -141,20 +141,10 @@ using UnityEngine.InputSystem;
         private bool _snap = false;
         private BoxCollider _shieldCollider;
 
+        private equipWeapon _inventory;
+        private int _equippedWeapon = -1;
+
         private const float _threshold = 0.01f;
-
-        private bool IsCurrentDeviceMouse
-        {
-            get
-            {
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-                return _playerInput.currentControlScheme == "KeyboardMouse";
-#else
-				return false;
-#endif
-            }
-        }
-
 
         private void Awake()
         {
@@ -165,11 +155,30 @@ using UnityEngine.InputSystem;
             }
         }
 
+        private void InitWeapons()
+        {
+            if (HammerHolder.transform.GetChild(0).gameObject.activeSelf)
+            {
+                _equippedWeapon = 0;
+                _inventory.activeWeapons[0] = true;
+            }
+            else if (SwordHolder.transform.GetChild(0).gameObject.activeSelf)
+            {
+                _equippedWeapon = 1;
+                _inventory.activeWeapons[1] = true;
+            }
+            else if (AxeHolder.transform.GetChild(0).gameObject.activeSelf)
+            {
+                _equippedWeapon = 2;
+                _inventory.activeWeapons[2] = true;
+            }
+        }
+
         private void Start()
         {
             currentHealth = maxHealth;
             SetHP();
-            loseTextObject.SetActive(false);
+            GameOverScreen.SetActive(false);
 
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             _relativeCameraPosition = transform.InverseTransformPoint(CinemachineCameraTarget.transform.position);
@@ -178,6 +187,8 @@ using UnityEngine.InputSystem;
             _controller = GetComponent<CharacterController>();
             _rbody = GetComponent<Rigidbody>();
             _shieldCollider = ShieldHolder.GetComponent<BoxCollider>();
+            _inventory = Inventory.GetComponent<equipWeapon>();
+            InitWeapons();
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
             _playerInput = GetComponent<PlayerInput>();
@@ -194,6 +205,12 @@ using UnityEngine.InputSystem;
 
         private void Update()
         {
+
+            if (GameOverScreen.activeSelf)
+            {
+                _playerInput.enabled = false;
+            }
+
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -236,12 +253,17 @@ using UnityEngine.InputSystem;
 
         private void CameraRotation()
         {
-            
+            // do not move the camera if game is paused
+            if (Time.timeScale == 0)
+            {
+                return;
+            }
+
             // if there is an input and camera position is not fixed
             if (_look.sqrMagnitude >= _threshold && !LockCameraPosition)
             {
                 //Don't multiply mouse input by Time.deltaTime;
-                float deltaTimeMultiplier = IsCurrentDeviceMouse ? CameraRotationSpeed : Time.deltaTime;
+                float deltaTimeMultiplier = CameraRotationSpeed;
 
                 _cinemachineTargetYaw += _look.x * deltaTimeMultiplier;
                 _cinemachineTargetPitch += _look.y * deltaTimeMultiplier;
@@ -305,7 +327,7 @@ using UnityEngine.InputSystem;
         public void OnBlock(InputAction.CallbackContext context)
         {
             _blocking = context.ReadValueAsButton();
-            if (_blocking)
+            if (_blocking && ShieldHolder.transform.GetChild(0).gameObject.activeSelf)
             {
                 _animator.SetBool("isBlocking", true);
             }
@@ -317,7 +339,7 @@ using UnityEngine.InputSystem;
 
         public void OnAttack(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && _equippedWeapon >= 0)
             {
                 if (_animator.GetBool("isWalking"))
                 {
@@ -332,31 +354,34 @@ using UnityEngine.InputSystem;
 
         public void OnEquipSword(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && _inventory.activeWeapons[1])
             {
                 SwordHolder.transform.GetChild(0).gameObject.SetActive(true);
                 HammerHolder.transform.GetChild(0).gameObject.SetActive(false);
                 AxeHolder.transform.GetChild(0).gameObject.SetActive(false);
+                _equippedWeapon = 1;
             }
         }
 
         public void OnEquipHammer(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && _inventory.activeWeapons[0])
             {
                 SwordHolder.transform.GetChild(0).gameObject.SetActive(false);
                 HammerHolder.transform.GetChild(0).gameObject.SetActive(true);
                 AxeHolder.transform.GetChild(0).gameObject.SetActive(false);
+                _equippedWeapon = 0;
             }
         }
 
         public void OnEquipAxe(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && _inventory.activeWeapons[2])
             {
                 SwordHolder.transform.GetChild(0).gameObject.SetActive(false);
                 HammerHolder.transform.GetChild(0).gameObject.SetActive(false);
                 AxeHolder.transform.GetChild(0).gameObject.SetActive(true);
+                _equippedWeapon = 2;
             }
         }
 
@@ -586,7 +611,7 @@ using UnityEngine.InputSystem;
         {
             if (currentHealth <= 0)
             {
-                loseTextObject.SetActive(true);
+                GameOverScreen.SetActive(true);
                 _animator.Play("Die");
             }
             countText.text = "HP: " + currentHealth.ToString();

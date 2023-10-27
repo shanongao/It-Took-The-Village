@@ -10,11 +10,11 @@ public class equipWeapon : MonoBehaviour
     [SerializeField] private GameObject[] prefabs;
 
     private GameObject weapon;
-    private bool[] activeWeapons;
+    public List<bool> activeWeapons;
 
     private void Start()
     {
-        activeWeapons = new bool[4];
+        activeWeapons = new List<bool>{false,false,false,false};
         menu.SetActive(false);
     }
 
@@ -23,6 +23,14 @@ public class equipWeapon : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             menu.SetActive(!menu.activeSelf);
+            if (menu.activeSelf)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
         }
 
         fixWeaponPosition();
@@ -49,24 +57,24 @@ public class equipWeapon : MonoBehaviour
     {
         if (prefabs[index] != null)
         {
-           weapon = Instantiate(prefabs[index], transform.position, Quaternion.identity);
+        //    weapon = Instantiate(prefabs[index], transform.position, Quaternion.identity);
             
         }
     }
 
     private void fixWeaponPosition()
     {
-        if (weapon)
-        {
-            weapon.transform.position = player.transform.position + new Vector3(0.4f, 0.4f, 0);
-            weapon.transform.eulerAngles = new Vector3(0, 90, 0);
-        }
+        // if (weapon)
+        // {
+        //     weapon.transform.position = player.transform.position + new Vector3(0.4f, 0.4f, 0);
+        //     weapon.transform.eulerAngles = new Vector3(0, 90, 0);
+        // }
     }
 
     public void setActiveWeapon(int key)
     {
         Debug.Log($"Setting {key - 1} true");
         activeWeapons[key - 1] = true;
-        Debug.Log(activeWeapons[3]);
+        // Debug.Log(activeWeapons[3]);
     }
 }
