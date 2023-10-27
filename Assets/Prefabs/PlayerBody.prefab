@@ -2838,7 +2838,7 @@ MonoBehaviour:
   rootTurnSpeed: 1
   countText: {fileID: 0}
   GameOverScreen: {fileID: 0}
-  maxHealth: 5
+  maxHealth: 100
   currentHealth: 0
 --- !u!114 &8561011292169680756
 MonoBehaviour:

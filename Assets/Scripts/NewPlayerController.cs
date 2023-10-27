@@ -142,7 +142,7 @@ using UnityEngine.InputSystem;
         private BoxCollider _shieldCollider;
 
         private equipWeapon _inventory;
-        private int _equippedWeapon = -1;
+        public int _equippedWeapon = -1;
 
         private const float _threshold = 0.01f;
 
@@ -216,6 +216,7 @@ using UnityEngine.InputSystem;
             Move();
             Action();
             SetHP();
+            OnEquip();
         }
 
         private void LateUpdate()
@@ -356,9 +357,6 @@ using UnityEngine.InputSystem;
         {
             if (context.performed && _inventory.activeWeapons[1])
             {
-                SwordHolder.transform.GetChild(0).gameObject.SetActive(true);
-                HammerHolder.transform.GetChild(0).gameObject.SetActive(false);
-                AxeHolder.transform.GetChild(0).gameObject.SetActive(false);
                 _equippedWeapon = 1;
             }
         }
@@ -367,9 +365,6 @@ using UnityEngine.InputSystem;
         {
             if (context.performed && _inventory.activeWeapons[0])
             {
-                SwordHolder.transform.GetChild(0).gameObject.SetActive(false);
-                HammerHolder.transform.GetChild(0).gameObject.SetActive(true);
-                AxeHolder.transform.GetChild(0).gameObject.SetActive(false);
                 _equippedWeapon = 0;
             }
         }
@@ -378,10 +373,29 @@ using UnityEngine.InputSystem;
         {
             if (context.performed && _inventory.activeWeapons[2])
             {
+                _equippedWeapon = 2;
+            }
+        }
+
+        private void OnEquip()
+        {
+            if (_equippedWeapon == 0 && _inventory.activeWeapons[0])
+            {
+                SwordHolder.transform.GetChild(0).gameObject.SetActive(false);
+                HammerHolder.transform.GetChild(0).gameObject.SetActive(true);
+                AxeHolder.transform.GetChild(0).gameObject.SetActive(false);
+            }
+            else if (_equippedWeapon == 1 && _inventory.activeWeapons[1])
+            {
+                SwordHolder.transform.GetChild(0).gameObject.SetActive(true);
+                HammerHolder.transform.GetChild(0).gameObject.SetActive(false);
+                AxeHolder.transform.GetChild(0).gameObject.SetActive(false);
+            }
+            else if (_equippedWeapon == 2 && _inventory.activeWeapons[2])
+            {
                 SwordHolder.transform.GetChild(0).gameObject.SetActive(false);
                 HammerHolder.transform.GetChild(0).gameObject.SetActive(false);
                 AxeHolder.transform.GetChild(0).gameObject.SetActive(true);
-                _equippedWeapon = 2;
             }
         }
 

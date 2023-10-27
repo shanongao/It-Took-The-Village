@@ -5,6 +5,7 @@ using UnityEngine;
 public class equipWeapon : MonoBehaviour
 {
     [SerializeField] private GameObject player;
+    private NewPlayerController playerController;
     [SerializeField] private GameObject menu;
     [Header("Weapon Prefabs")]
     [SerializeField] private GameObject[] prefabs;
@@ -14,6 +15,7 @@ public class equipWeapon : MonoBehaviour
 
     private void Start()
     {
+        playerController = player.GetComponent<NewPlayerController>();
         activeWeapons = new List<bool>{false,false,false,false};
         menu.SetActive(false);
     }
@@ -73,8 +75,17 @@ public class equipWeapon : MonoBehaviour
 
     public void setActiveWeapon(int key)
     {
-        Debug.Log($"Setting {key - 1} true");
+        // Debug.Log($"Setting {key - 1} true");
         activeWeapons[key - 1] = true;
-        // Debug.Log(activeWeapons[3]);
     }
+
+    public void equipFromUI(int key)
+    {
+        if (activeWeapons[key-1])
+        {
+            playerController._equippedWeapon = key-1;
+        }
+    }
+
+
 }
