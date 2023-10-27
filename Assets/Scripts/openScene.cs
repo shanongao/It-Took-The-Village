@@ -9,6 +9,7 @@ public class openScene : MonoBehaviour
     public void OpenScene()
     {
         SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1f;
     }
 
     private void OnTriggerEnter(Collider other)
