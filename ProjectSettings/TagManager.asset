@@ -14,6 +14,7 @@ TagManager:
   - MeleeSlime
   - EnemyMelee
   - EnemyProjectile
+  - Door
   layers:
   - Default
   - TransparentFX
