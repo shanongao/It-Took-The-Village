@@ -8,6 +8,7 @@ public class ChestInteraction : MonoBehaviour
     public GameObject chestClosed;
     public GameObject chestOpen;
     public GameObject prompt;
+    public GameObject key;
     public string promptText;
     private bool isInRange = false;
     private bool isOpened = false;
@@ -15,6 +16,7 @@ public class ChestInteraction : MonoBehaviour
     private void Start()
     {
         prompt.SetActive(false);
+        key.SetActive(false);
     }
 
     void Update()
@@ -37,6 +39,7 @@ public class ChestInteraction : MonoBehaviour
         chestClosed.SetActive(false);
         chestOpen.SetActive(true);
         prompt.SetActive(false);
+        key.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
