@@ -18788,16 +18788,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975428699739839955, guid: b21a7d6e43a3f432caa5a1d2e372b765,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1975428699739839955, guid: b21a7d6e43a3f432caa5a1d2e372b765,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1975428699739839955, guid: b21a7d6e43a3f432caa5a1d2e372b765,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: -326.79657
       objectReference: {fileID: 0}
@@ -21452,6 +21442,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameOverScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211057654814374178, guid: 8e87c8eba0def47a6ae767c35e80b1f5,
+        type: 3}
+      propertyPath: sceneName
+      value: Act_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e87c8eba0def47a6ae767c35e80b1f5, type: 3}
@@ -42065,7 +42060,7 @@ PrefabInstance:
     - target: {fileID: 5868138604480144876, guid: 63d287701b7a042fcb383abf70b867de,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5868138604480144876, guid: 63d287701b7a042fcb383abf70b867de,
         type: 3}

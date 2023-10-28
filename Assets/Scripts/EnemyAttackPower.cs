@@ -8,11 +8,12 @@ public class EnemyAttackPower : MonoBehaviour
     public int Damage = 5;
 
     private float _damageTimeout = 0f;
+    private NewPlayerController _playerController;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _playerController = GameObject.FindWithTag("Player").GetComponent<NewPlayerController>();
     }
 
     // Update is called once per frame
@@ -25,7 +26,7 @@ public class EnemyAttackPower : MonoBehaviour
     {
         if (_damageTimeout <= 0)
         {
-            if (other.gameObject.CompareTag("Shield"))
+            if (other.gameObject.CompareTag("Shield") && _playerController._blocking)
             {
                 Damage = 0;
                 _damageTimeout = 0.5f;

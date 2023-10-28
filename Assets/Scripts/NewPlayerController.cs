@@ -113,7 +113,7 @@ using UnityEngine.InputSystem;
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
-        private bool _blocking = false;
+        public bool _blocking = false;
         private float _damageTimeout = 0f;
 
         // timeout deltatime
@@ -634,11 +634,13 @@ using UnityEngine.InputSystem;
         void ShieldUp()
         {
             _shieldCollider.enabled = true;
+            _blocking = true;
         }
 
         void ShieldDown()
         {
             _shieldCollider.enabled = false;
+            _blocking = false;
         }
 
         void OnSwordSlash()
