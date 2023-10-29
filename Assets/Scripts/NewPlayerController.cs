@@ -118,6 +118,7 @@ using UnityEngine.InputSystem;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
         public bool _blocking = false;
+        public bool _attacking = false;
         private float _damageTimeout = 0f;
 
         // timeout deltatime
@@ -127,7 +128,6 @@ using UnityEngine.InputSystem;
         // animation IDs
         private int _animIDSpeed;
         private int _animIDGrounded;
-        private int _animIDJump;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
 
@@ -148,7 +148,7 @@ using UnityEngine.InputSystem;
         private equipWeapon _inventory;
         public int _equippedWeapon = -1;
 
-        private const float _threshold = 0.01f;
+        private const float _threshold = 0.001f;
 
         private void Awake()
         {
@@ -239,7 +239,6 @@ using UnityEngine.InputSystem;
         {
             _animIDSpeed = Animator.StringToHash("Speed");
             _animIDGrounded = Animator.StringToHash("Grounded");
-            _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
         }
@@ -487,7 +486,6 @@ using UnityEngine.InputSystem;
                 _fallTimeoutDelta = FallTimeout;
 
                 // update animator if using character
-                _animator.SetBool(_animIDJump, false);
                 _animator.SetBool(_animIDFreeFall, false);
 
                 // stop our velocity dropping infinitely when grounded
@@ -503,7 +501,6 @@ using UnityEngine.InputSystem;
                 //     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
                 //     // update animator if using character
-                //     _animator.SetBool(_animIDJump, true);
                 //     _animator.Play("Jump");
                 // }
 
@@ -650,5 +647,11 @@ using UnityEngine.InputSystem;
         void OnSwordSlash()
         {
             AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
+            _attacking = true;
+        }
+
+        void OnEndSwordSlash()
+        {
+            _attacking = false;
         }
     }

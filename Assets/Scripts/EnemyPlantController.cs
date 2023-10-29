@@ -18,6 +18,7 @@ public class EnemyPlantController : MonoBehaviour
 
     private Vector3 _playerPosition;
     private GameObject _player;
+    private NewPlayerController _playerController;
     private Animator _animator;
     private bool _alive = true;
 
@@ -25,6 +26,7 @@ public class EnemyPlantController : MonoBehaviour
     void Start()
     {
         _player = GameObject.FindWithTag("Player");
+        _playerController = _player.GetComponent<NewPlayerController>();
         _animator = GetComponent<Animator>();
         bulletTime = timer;
     }
@@ -43,9 +45,7 @@ public class EnemyPlantController : MonoBehaviour
         if (other.gameObject.CompareTag("Weapon")) 
         {
 
-            Animator playerAnimator = _player.GetComponent<Animator>();
-            if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("DownSwing") || 
-                playerAnimator.GetCurrentAnimatorStateInfo(1).IsName("DownSwingMoving"))
+            if (_playerController._attacking)
             {
                 AudioSource.PlayClipAtPoint(OnHitSound, transform.position, AudioVolume);
                 _alive = false;
