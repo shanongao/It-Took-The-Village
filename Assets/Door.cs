@@ -1,17 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Door : MonoBehaviour
 {
     public GameObject door;
+    public GameObject prompt;
+    private NewPlayerController _playerController;
+    private string promptText;
+    
     private bool isInRange = false;
+
+    private void Start()
+    {
+        prompt.SetActive(false);
+        _playerController = GameObject.FindWithTag("Player").GetComponent<NewPlayerController>();
+    }
 
     private void Update()
     {
-        if (isInRange && Input.GetKeyDown(KeyCode.E))
+        if (isInRange)
         {
-            OpenDoor();
+            prompt.SetActive(true);
+            TextMeshProUGUI tmp = prompt.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+            tmp.SetText(promptText);
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                OpenDoor();
+            }
         }
     }
 
@@ -19,10 +37,21 @@ public class Door : MonoBehaviour
     {
         if (door != null)
         {
-            door.SetActive(false);
-            if (door.TryGetComponent(out Collider collider))
+            if (_playerController.doorKey.activeSelf)
             {
-                collider.enabled = false;
+                door.SetActive(false);
+                if (door.TryGetComponent(out Collider collider))
+                {
+                    collider.enabled = false;
+                }
+                _playerController.doorKey.SetActive(false);
+                prompt.SetActive(false);
+            }
+            else
+            {
+                promptText = "The door is locked";
+                TextMeshProUGUI tmp = prompt.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+                tmp.SetText(promptText);
             }
         }
     }
@@ -32,6 +61,7 @@ public class Door : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInRange = true;
+            promptText = "Press E to open";
         }
     }
 
@@ -40,6 +70,7 @@ public class Door : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInRange = false;
+            prompt.SetActive(false);
         }
     }
 }

@@ -8,7 +8,8 @@ public class ChestInteraction : MonoBehaviour
     public GameObject chestClosed;
     public GameObject chestOpen;
     public GameObject prompt;
-    public GameObject key;
+    private NewPlayerController _playerController;
+    // public GameObject key;
     public string promptText;
     private bool isInRange = false;
     private bool isOpened = false;
@@ -16,7 +17,7 @@ public class ChestInteraction : MonoBehaviour
     private void Start()
     {
         prompt.SetActive(false);
-        key.SetActive(false);
+        _playerController = GameObject.FindWithTag("Player").GetComponent<NewPlayerController>();
     }
 
     void Update()
@@ -39,7 +40,7 @@ public class ChestInteraction : MonoBehaviour
         chestClosed.SetActive(false);
         chestOpen.SetActive(true);
         prompt.SetActive(false);
-        key.SetActive(true);
+        _playerController.doorKey.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)

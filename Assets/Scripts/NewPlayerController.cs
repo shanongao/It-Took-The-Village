@@ -16,6 +16,8 @@ using UnityEngine.InputSystem;
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
+        public float rootMovementSpeed = 1f;
+        public float rootTurnSpeed = 1f;
 
         [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 5.335f;
@@ -30,6 +32,7 @@ using UnityEngine.InputSystem;
         [Tooltip("Acceleration and deceleration")]
         public float SpeedChangeRate = 10.0f;
 
+        [Header("Equipment")]
         public GameObject Inventory;
         [Tooltip("Location to equip sword")]
         public GameObject SwordHolder;
@@ -40,6 +43,7 @@ using UnityEngine.InputSystem;
         [Tooltip("Location to equip shield")]
         public GameObject ShieldHolder;
 
+        [Header("Audio")]
         [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
         public AudioClip LandingAudioClip;
         public AudioClip[] FootstepAudioClips;
@@ -92,10 +96,10 @@ using UnityEngine.InputSystem;
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
-        public float rootMovementSpeed = 1f;
-        public float rootTurnSpeed = 1f;
+        [Header("Items")]
+        public GameObject doorKey;
         
-        //UI
+        [Header("UI")]
         public TextMeshProUGUI countText;
         public GameObject GameOverScreen;
         public int maxHealth = 100;

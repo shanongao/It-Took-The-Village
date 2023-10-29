@@ -3250,7 +3250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355bb5a1b0c6b4f52b3e70c077b1cf52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 50
+  HP: 30
   detectionDistance: 8
   attackDistance: 2.5
   damage: 10
