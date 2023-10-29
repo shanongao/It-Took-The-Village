@@ -360,8 +360,16 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 1
+      - time: 0.981203
         functionName: OnDeath
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 4025ff483c38995439490f51f5a0d9cd,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: DestroyEnemy
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 4025ff483c38995439490f51f5a0d9cd,
           type: 3}
