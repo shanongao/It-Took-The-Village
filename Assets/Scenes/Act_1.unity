@@ -35171,6 +35171,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 704008116}
     m_Modifications:
+    - target: {fileID: 374289200826803958, guid: 9886b54aad4d5482687b294ea433d7e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8041174101608860058, guid: 9886b54aad4d5482687b294ea433d7e5,
         type: 3}
       propertyPath: m_IsActive
@@ -53236,6 +53241,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 7161235189390201496, guid: 82675a0facf824c3381835588b5e8bdb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7161235189390201499, guid: 82675a0facf824c3381835588b5e8bdb,
         type: 3}

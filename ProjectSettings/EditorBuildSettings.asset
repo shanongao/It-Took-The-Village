@@ -9,17 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Temp/Playground.unity
     guid: e9017d5f96b9f09489b4b37e1d6eb914
   - enabled: 1
-    path: Assets/Scenes/Act_2_Intro.unity
-    guid: ddfff98e457c5487eb0d3ceaa87cbdb3
+    path: Assets/Scenes/Lobby.unity
+    guid: a15af35b63f7e4015a80b7007be82ffb
   - enabled: 1
     path: Assets/Scenes/Act_1.unity
     guid: 930d2a1aced80f64f809155f53c8f433
   - enabled: 1
+    path: Assets/Scenes/Act_2_Intro.unity
+    guid: ddfff98e457c5487eb0d3ceaa87cbdb3
+  - enabled: 1
     path: Assets/Scenes/Act_2.unity
     guid: 690ca3518dcf9e84ea29004e005248a5
-  - enabled: 1
-    path: Assets/Scenes/Lobby.unity
-    guid: a15af35b63f7e4015a80b7007be82ffb
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
       type: 2}
