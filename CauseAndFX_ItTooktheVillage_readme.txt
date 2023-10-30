@@ -66,8 +66,22 @@ Ruixuan Yu:
 \Assets\Scripts\DamageCalculator.cs
 \Assets\Scripts\DialogBoxController.cs
 \Assets\Scripts\Door.cs
+\Assets\Scripts\EnemyAttackPower.cs
+\Assets\Scripts\EnemyPlantController.cs
+\Assets\Scripts\EnemySkeletonController.cs
+\Assets\Scripts\EnemySlimeController.cs
+\Assets\Scripts\NewPlayerController.cs
+\Assets\Scripts\NPCDialogHandler.cs
+\Assets\Animations\BossAnimator.controller
+\Assets\Prefabs\Enemies\EnemyPlant.prefab
+\Assets\Prefabs\Enemies\EnemySkeleton.prefab
+\Assets\Prefabs\Enemies\EnemySlime.prefab
+\Assets\Prefabs\NPC\
+\Assets\Prefabs\UI\
+\Assets\Prefabs\PlayerBody.prefab
+
 Built original basic action demo that started the project.
-Provided bulk of character and enemy controller development/alpha core gameplay. 
+Provided bulk of character and enemy controller development, animations, and alpha core gameplay. 
 
 
 Greg Frantzen:
