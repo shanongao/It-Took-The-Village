@@ -2,27 +2,56 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DialogBoxController : MonoBehaviour
 {
     public TextMeshProUGUI dialogText;
     public GameObject dialogPanel;
+    private Queue<string> dialogQueue;
+    private bool isDisplayingDialog;
 
     private void Start()
     {
+        dialogQueue = new Queue<string>();
         HideDialog();
     }
 
     public void ShowDialog(string message)
     {
-        dialogText.text = message;
-        dialogPanel.SetActive(true);
+        dialogQueue.Enqueue(message);
+
+        if (!isDisplayingDialog)
+        {
+            StartCoroutine(DisplayDialogFromQueue());
+        }
+    }
+
+    private IEnumerator DisplayDialogFromQueue()
+    {
+        while (dialogQueue.Count > 0)
+        {
+            isDisplayingDialog = true;
+            string messageToShow = dialogQueue.Dequeue();
+            dialogText.text = messageToShow;
+            dialogPanel.SetActive(true);
+
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space)); // Wait for player input to continue
+            HideDialog();
+        }
+
+        isDisplayingDialog = false;
     }
 
     public void HideDialog()
     {
         dialogPanel.SetActive(false);
         dialogText.text = "";
+    }
+
+    public bool isDialogOpen()
+    {
+        return dialogPanel.activeSelf;
     }
 
     public void WaitAndShowDialog(float waitTime, string message)
@@ -34,10 +63,5 @@ public class DialogBoxController : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         ShowDialog(message);
-    }
-
-    public bool isDialogOpen()
-    {
-        return dialogPanel.activeSelf;
     }
 }

@@ -4,26 +4,27 @@ using TMPro;
 
 public class NPCDialogHandler : MonoBehaviour
 {
+    public static NPCDialogHandler ActiveDialogHandler;
+
     public GameObject prompt;
     public GameObject dialogCanvas;
     public string promptText;
-    [SerializeField] public string[] dialogueText;
+    [SerializeField] private string[] dialogueText;
     private int dialogIndex = 0;
 
     private TextMeshProUGUI text;
     private bool inDialog;
     private bool isInRange;
+    private GameObject player;
+    private NewPlayerController playerController; // Updated to NewPlayerController
 
     private void Awake()
     {
-        
+        text = dialogCanvas.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
     {
-        // dialogCanvas = GameObject.FindWithTag("DialogCanvas");
-        // prompt = GameObject.FindWithTag("ButtonPrompt");
-        text = dialogCanvas.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         prompt.SetActive(false);
         dialogCanvas.SetActive(false);
     }
@@ -32,6 +33,8 @@ public class NPCDialogHandler : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            player = other.gameObject;
+            playerController = player.GetComponent<NewPlayerController>(); // Updated to NewPlayerController
             isInRange = true;
         }
     }
@@ -43,26 +46,13 @@ public class NPCDialogHandler : MonoBehaviour
             isInRange = false;
             dialogIndex = 0;
             prompt.SetActive(false);
+            CloseDialog();
+            ResumePlayerMovement();
         }
     }
 
     private void Update()
     {
-        if (inDialog && Input.GetKeyDown(KeyCode.E))
-        {
-            if (dialogIndex >= dialogueText.Length)
-            {
-                dialogIndex = 0;
-                dialogCanvas.SetActive(false);
-                inDialog = false;
-                return;
-            }
-            else
-            {
-                DisplayDialog();
-            }
-        }
-
         if (isInRange && !inDialog)
         {
             prompt.SetActive(true);
@@ -70,8 +60,30 @@ public class NPCDialogHandler : MonoBehaviour
             tmp.SetText(promptText);
             if (Input.GetKeyDown(KeyCode.E))
             {
+                if (ActiveDialogHandler != null)
+                {
+                    ActiveDialogHandler.CloseDialog();
+                }
+
+                ActiveDialogHandler = this;
                 inDialog = true;
                 prompt.SetActive(false);
+                DisplayDialog();
+                PausePlayerMovement();
+            }
+        }
+
+        if (inDialog && Input.GetKeyDown(KeyCode.E))
+        {
+            if (dialogIndex >= dialogueText.Length)
+            {
+                dialogIndex = 0;
+                CloseDialog();
+                ResumePlayerMovement();
+                return;
+            }
+            else
+            {
                 DisplayDialog();
             }
         }
@@ -82,5 +94,32 @@ public class NPCDialogHandler : MonoBehaviour
         dialogCanvas.SetActive(true);
         text.SetText(dialogueText[dialogIndex]);
         dialogIndex++;
+    }
+
+    public void CloseDialog()
+    {
+        dialogCanvas.SetActive(false);
+        inDialog = false;
+        ActiveDialogHandler = null;
+    }
+
+    private void PausePlayerMovement()
+    {
+        // This is where you can add logic to pause player movement
+        if (playerController != null)
+        {
+            // Example: Disabling the player controller script
+            playerController.enabled = false;
+        }
+    }
+
+    private void ResumePlayerMovement()
+    {
+        // This is where you add logic to resume player movement
+        if (playerController != null)
+        {
+            // Example: Enabling the player controller script
+            playerController.enabled = true;
+        }
     }
 }
