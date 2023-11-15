@@ -16,7 +16,7 @@ public class NPCDialogHandler : MonoBehaviour
     private bool inDialog;
     private bool isInRange;
     private GameObject player;
-    private NewPlayerController playerController; // Updated to NewPlayerController
+    private NewPlayerController playerController;
 
     private void Awake()
     {
@@ -105,20 +105,16 @@ public class NPCDialogHandler : MonoBehaviour
 
     private void PausePlayerMovement()
     {
-        // This is where you can add logic to pause player movement
         if (playerController != null)
         {
-            // Example: Disabling the player controller script
             playerController.enabled = false;
         }
     }
 
     private void ResumePlayerMovement()
     {
-        // This is where you add logic to resume player movement
         if (playerController != null)
         {
-            // Example: Enabling the player controller script
             playerController.enabled = true;
         }
     }
