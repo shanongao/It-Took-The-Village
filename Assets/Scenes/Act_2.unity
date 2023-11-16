@@ -26822,6 +26822,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cafba949df75fc04c985cdd74d88cd97, type: 3}
+--- !u!1 &1104050131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 104250, guid: b626a2c19b493bc47b8551a65bce8ace,
+    type: 3}
+  m_PrefabInstance: {fileID: 1393411777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1104050135
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104050131}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b782ac054ec443746ba19063d1e16596, type: 3}
 --- !u!4 &1104206295 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8324878500490236772, guid: f90f74c8bd6b7450db0dedc95bde2a05,
@@ -33673,6 +33693,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 606983038410394847, guid: 8c8cbd8bfd41144d29366e03943e39e6,
+        type: 3}
+      propertyPath: sceneName
+      value: Act_2_Outro
       objectReference: {fileID: 0}
     - target: {fileID: 606983038410394847, guid: 8c8cbd8bfd41144d29366e03943e39e6,
         type: 3}

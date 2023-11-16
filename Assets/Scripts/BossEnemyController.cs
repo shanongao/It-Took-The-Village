@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BossEnemyController : MonoBehaviour
 {
     [SerializeField] private float timer = 5;
+    [SerializeField] private string sceneName;
     private float bulletTime;
 
     public GameObject enemyBullet;
@@ -105,6 +107,7 @@ public class BossEnemyController : MonoBehaviour
     void DestroyEnemy()
     {
         Destroy(this.gameObject);
+        SceneManager.LoadScene(sceneName);
     }
 
     void OnShootBullet()
