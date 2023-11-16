@@ -51,7 +51,7 @@ public class PlayerTutorialInteraction : MonoBehaviour
     {
         if (state == State.Welcome)
         {
-            StartTutorial(welcomeMessage);
+            StartTutorial();
         }
         else if (state == State.Walking)
         {
@@ -87,16 +87,10 @@ public class PlayerTutorialInteraction : MonoBehaviour
         }
     }
 
-    void StartTutorial(string message)
+    void StartTutorial()
     {
-        if (!dialogBoxController.isDialogOpen())
-        {
-            dialogBoxController.ShowDialog(message);
-        }
-        else
-        {
-            state = State.Walking;
-        }
+        dialogBoxController.ShowDialog(welcomeMessage);
+        state = State.Walking;
     }
 
     void CheckWalking()
