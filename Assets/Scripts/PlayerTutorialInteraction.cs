@@ -21,8 +21,8 @@ public class PlayerTutorialInteraction : MonoBehaviour
     private State state;
     
 
-    private string welcomeMessage = "Welcome to Cause and FX tutorial, let's get started. First we'll " +
-        "try to move around, use ASWD keys to walk around the scene. Click Enter to start.";
+    private string welcomeMessage = "Welcome to the tutorial, let's get started. First we'll " +
+        "try to move around, use WASD keys to walk around the scene all 4 directions. Click Enter to start.";
 
     private string walkingMessage = "Nice, let's talk to some villagers now, approach " +
         "one of the villagers and follow the instructions to speak to them. Click Enter to continue";

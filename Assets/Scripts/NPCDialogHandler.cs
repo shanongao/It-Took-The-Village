@@ -85,6 +85,7 @@ public class NPCDialogHandler : MonoBehaviour
             else
             {
                 DisplayDialog();
+                dialogIndex++;
             }
         }
     }
@@ -93,7 +94,6 @@ public class NPCDialogHandler : MonoBehaviour
     {
         dialogCanvas.SetActive(true);
         text.SetText(dialogueText[dialogIndex]);
-        dialogIndex++;
     }
 
     public void CloseDialog()

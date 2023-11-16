@@ -22175,6 +22175,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8324878500490236771, guid: f90f74c8bd6b7450db0dedc95bde2a05,
         type: 3}
+      propertyPath: coinSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ba8aef5d301b5ca48926c60648ddccb9, type: 3}
+    - target: {fileID: 8324878500490236771, guid: f90f74c8bd6b7450db0dedc95bde2a05,
+        type: 3}
       propertyPath: currencyText
       value: 
       objectReference: {fileID: 616416885}
@@ -25419,6 +25424,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8324878500490236771, guid: f90f74c8bd6b7450db0dedc95bde2a05,
         type: 3}
+      propertyPath: coinSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ba8aef5d301b5ca48926c60648ddccb9, type: 3}
+    - target: {fileID: 8324878500490236771, guid: f90f74c8bd6b7450db0dedc95bde2a05,
+        type: 3}
       propertyPath: currencyText
       value: 
       objectReference: {fileID: 616416885}
@@ -28628,6 +28638,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1460224691}
     m_Modifications:
+    - target: {fileID: 8324878500490236771, guid: f90f74c8bd6b7450db0dedc95bde2a05,
+        type: 3}
+      propertyPath: coinSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ba8aef5d301b5ca48926c60648ddccb9, type: 3}
     - target: {fileID: 8324878500490236771, guid: f90f74c8bd6b7450db0dedc95bde2a05,
         type: 3}
       propertyPath: currencyText
@@ -41604,6 +41619,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8324878500490236771, guid: f90f74c8bd6b7450db0dedc95bde2a05,
         type: 3}
+      propertyPath: coinSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ba8aef5d301b5ca48926c60648ddccb9, type: 3}
+    - target: {fileID: 8324878500490236771, guid: f90f74c8bd6b7450db0dedc95bde2a05,
+        type: 3}
       propertyPath: currencyText
       value: 
       objectReference: {fileID: 616416885}
@@ -41685,7 +41705,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 61e1095672aec4331b630e6d243d0b94, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ba8aef5d301b5ca48926c60648ddccb9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -43527,6 +43547,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1460224691}
     m_Modifications:
+    - target: {fileID: 8324878500490236771, guid: f90f74c8bd6b7450db0dedc95bde2a05,
+        type: 3}
+      propertyPath: coinSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ba8aef5d301b5ca48926c60648ddccb9, type: 3}
     - target: {fileID: 8324878500490236771, guid: f90f74c8bd6b7450db0dedc95bde2a05,
         type: 3}
       propertyPath: currencyText
@@ -51179,6 +51204,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8324878500490236771, guid: f90f74c8bd6b7450db0dedc95bde2a05,
         type: 3}
+      propertyPath: coinSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ba8aef5d301b5ca48926c60648ddccb9, type: 3}
+    - target: {fileID: 8324878500490236771, guid: f90f74c8bd6b7450db0dedc95bde2a05,
+        type: 3}
       propertyPath: currencyText
       value: 
       objectReference: {fileID: 616416885}
@@ -51260,7 +51290,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 61e1095672aec4331b630e6d243d0b94, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ba8aef5d301b5ca48926c60648ddccb9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -52469,7 +52499,7 @@ PrefabInstance:
     - target: {fileID: 1938229537459195558, guid: 19a7aad17093d43c1b296fb3288e72ff,
         type: 3}
       propertyPath: dialogueText.Array.data[2]
-      value: 
+      value: If you want to see our village, just follow the path through the forest.
       objectReference: {fileID: 0}
     - target: {fileID: 1953030293637884289, guid: 19a7aad17093d43c1b296fb3288e72ff,
         type: 3}
