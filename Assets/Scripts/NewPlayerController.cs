@@ -226,12 +226,12 @@ using UnityEngine.InputSystem;
         private void LateUpdate()
         {
             CameraRotation();
-            if (_snap)
-            {
-                CinemachineCameraTarget.transform.position = DefaultCamera.transform.position;
-                CinemachineCameraTarget.transform.rotation = DefaultCamera.transform.rotation;
-                _snap = false;
-            }
+            // if (_snap)
+            // {
+            //     CinemachineCameraTarget.transform.position = DefaultCamera.transform.position;
+            //     CinemachineCameraTarget.transform.rotation = DefaultCamera.transform.rotation;
+            //     _snap = false;
+            // }
             _damageTimeout -= Time.deltaTime;
         }
 
