@@ -91,20 +91,23 @@ public class EnemySkeletonController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon")) 
         {
-            if (_playerController._attacking)
+            if (_playerController._attacking > 0)
             {
-                HP -= 5; // @TODO hard code damage point for now
                 AudioSource.PlayClipAtPoint(OnHitSound, transform.position, AudioVolume);
-                if (HP <= 0)
-                {
-                    _alive = false;
-                    _animator.Play("Die");
-                }
-                else
+                // take damage
+                HP -= _playerController._attacking;
+                // stagger enemey if enough damage
+                if (_playerController._attacking >= 10)
                 {
                     _animator.Play("Stagger");
                 }
             }
+        }
+
+        if (HP <= 0)
+        {
+            _alive = false;
+            _animator.Play("Die");
         }
     }
 

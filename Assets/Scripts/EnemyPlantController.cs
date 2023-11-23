@@ -7,6 +7,7 @@ public class EnemyPlantController : MonoBehaviour
     [SerializeField] private float timer = 5;
     private float bulletTime;
 
+    public int HP = 15;
     public GameObject enemyBullet;
     public Transform spawnPoint;
     public float bulletSpeed = 100;
@@ -44,13 +45,18 @@ public class EnemyPlantController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon")) 
         {
-
-            if (_playerController._attacking)
+            if (_playerController._attacking > 0)
             {
                 AudioSource.PlayClipAtPoint(OnHitSound, transform.position, AudioVolume);
-                _alive = false;
-                _animator.Play("Die");
+                // take damage
+                HP -= _playerController._attacking;
             }
+        }
+
+        if (HP <= 0)
+        {
+            _alive = false;
+            _animator.Play("Die");
         }
     }
 

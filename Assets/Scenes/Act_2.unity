@@ -11737,12 +11737,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cafba949df75fc04c985cdd74d88cd97, type: 3}
---- !u!1 &444407096 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 374289200826803958, guid: 9886b54aad4d5482687b294ea433d7e5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1113960307}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &445498444
 GameObject:
   m_ObjectHideFlags: 0
@@ -27165,10 +27159,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 704008116}
     m_Modifications:
-    - target: {fileID: 374289200826803958, guid: 9886b54aad4d5482687b294ea433d7e5,
+    - target: {fileID: 5222901559872988641, guid: 9886b54aad4d5482687b294ea433d7e5,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: attackPower
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8161766158435668112, guid: 9886b54aad4d5482687b294ea433d7e5,
         type: 3}
@@ -27225,16 +27219,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8561011292169680755, guid: 9886b54aad4d5482687b294ea433d7e5,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8561011292169680757, guid: 9886b54aad4d5482687b294ea433d7e5,
-        type: 3}
-      propertyPath: doorKey
-      value: 
-      objectReference: {fileID: 444407096}
     - target: {fileID: 8561011292169680757, guid: 9886b54aad4d5482687b294ea433d7e5,
         type: 3}
       propertyPath: Inventory
@@ -27255,8 +27239,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBody
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8561011292169680755, guid: 9886b54aad4d5482687b294ea433d7e5, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9886b54aad4d5482687b294ea433d7e5, type: 3}
 --- !u!4 &1113960308 stripped
 Transform:
@@ -37933,6 +37916,7 @@ GameObject:
   - component: {fileID: 1512970133}
   - component: {fileID: 1512970132}
   - component: {fileID: 1512970136}
+  - component: {fileID: 1512970137}
   m_Layer: 0
   m_Name: sword
   m_TagString: Untagged
@@ -38052,6 +38036,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &1512970137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512970130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa63666885e84116946a60a6da2b463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPower: 5
+  maxAttackPower: 15
+  upgradeIncrement: 5
 --- !u!1 &1513497257
 GameObject:
   m_ObjectHideFlags: 0

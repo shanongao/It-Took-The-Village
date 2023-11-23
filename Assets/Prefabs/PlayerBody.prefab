@@ -2752,7 +2752,6 @@ GameObject:
   - component: {fileID: 8561011292169680754}
   - component: {fileID: 8561011292169680757}
   - component: {fileID: 8561011292169680756}
-  - component: {fileID: 8561011292169680755}
   m_Layer: 8
   m_Name: PlayerBody
   m_TagString: Player
@@ -2861,7 +2860,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 2
-  SprintSpeed: 5.335
+  rootMovementSpeed: 1
+  rootTurnSpeed: 1
+  SprintSpeed: 3
   CameraRotationSpeed: 30
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
@@ -2900,13 +2901,13 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
-  rootMovementSpeed: 1
-  rootTurnSpeed: 1
+  doorKey: {fileID: 374289200826803958}
   countText: {fileID: 0}
   GameOverScreen: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
   _blocking: 0
+  _attacking: 0
   _equippedWeapon: -1
 --- !u!114 &8561011292169680756
 MonoBehaviour:
@@ -3099,18 +3100,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &8561011292169680755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8795454998909323818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 287e175b2c4c840618f55ddbabbedcac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &305010967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3223,6 +3212,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: rust_key
       objectReference: {fileID: 0}
+    - target: {fileID: 374289202576707483, guid: 78df1db2fbc8ec64f949fac0c05bf693,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3705028537381535112, guid: 78df1db2fbc8ec64f949fac0c05bf693,
         type: 3}
       propertyPath: m_RootOrder
@@ -3295,6 +3289,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78df1db2fbc8ec64f949fac0c05bf693, type: 3}
+--- !u!1 &374289200826803958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 374289202576707483, guid: 78df1db2fbc8ec64f949fac0c05bf693,
+    type: 3}
+  m_PrefabInstance: {fileID: 2018683245}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3705028538586174693 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3705028537381535112, guid: 78df1db2fbc8ec64f949fac0c05bf693,

@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemySlimeController : MonoBehaviour
 {
+    public int HP = 10;
     public float detectionDistance = 6f;
     public float attackDistance = 2f;
     public int damage = 5;
@@ -91,12 +92,18 @@ public class EnemySlimeController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon")) 
         {
-            if (_playerController._attacking)
+            if (_playerController._attacking > 0)
             {
                 AudioSource.PlayClipAtPoint(OnHitSound, transform.position, AudioVolume);
-                _alive = false;
-                _animator.Play("Die");
+                // take damage
+                HP -= _playerController._attacking;
             }
+        }
+
+        if (HP <= 0)
+        {
+            _alive = false;
+            _animator.Play("Die");
         }
     }
 

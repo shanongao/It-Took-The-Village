@@ -90,17 +90,18 @@ public class BossEnemyController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon")) 
         {
-            if (_playerController._attacking)
+            if (_playerController._attacking > 0)
             {
-                HP -= 5; // @TODO hard code damage point for now
                 AudioSource.PlayClipAtPoint(OnHitSound, transform.position, AudioVolume);
-                if (HP <= 0)
-                {
-                    _alive = false;
-                    _animator.Play("Die");
-                    BossUI.SetActive(false);
-                }
+                // take damage
+                HP -= _playerController._attacking;
             }
+        }
+
+        if (HP <= 0)
+        {
+            _alive = false;
+            _animator.Play("Die");
         }
     }
 

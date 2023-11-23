@@ -118,7 +118,7 @@ using UnityEngine.InputSystem;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
         public bool _blocking = false;
-        public bool _attacking = false;
+        public int _attacking = 0;
         private float _damageTimeout = 0f;
 
         // timeout deltatime
@@ -221,7 +221,6 @@ using UnityEngine.InputSystem;
             Action();
             SetHP();
             OnEquip();
-            Debug.Log(transform.position);
         }
 
         private void LateUpdate()
@@ -287,6 +286,10 @@ using UnityEngine.InputSystem;
         public void OnMove(InputAction.CallbackContext context)
         {
             _moveVector = context.ReadValue<Vector2>();
+            if (_animator.GetBool("isAxeSwinging") || _animator.GetBool("isHammerStriking"))
+            {
+                _moveVector = Vector2.zero;
+            }
             if (_moveVector.magnitude > 0)
             {
                 _animator.SetBool("isWalking", true);
@@ -326,7 +329,14 @@ using UnityEngine.InputSystem;
         public void OnJump(InputAction.CallbackContext context)
         {
             _jump = context.ReadValueAsButton();
-            _animator.Play("Jump");
+            if (_animator.GetBool("isWalking"))
+            {
+                 _animator.Play("ForwardJump");
+            }
+            else
+            {
+                _animator.Play("Jump");
+            }
         }
 
         public void OnBlock(InputAction.CallbackContext context)
@@ -506,16 +516,6 @@ using UnityEngine.InputSystem;
             CinemachineCameraTarget.transform.position = temp.transform.TransformPoint(_relativeCameraPosition);
         }
 
-        // void OnAnimatorMove()
-        // {
-        //     if (_animator.GetBool("isHammerStriking"))
-        //     {
-        //         Vector3 newPosition = transform.position;
-        //         newPosition += transform.forward * 100 * Time.deltaTime;
-        //         transform.position = newPosition;
-        //     }
-        // }
-
         private void Action()
         {
             
@@ -663,6 +663,10 @@ using UnityEngine.InputSystem;
         void TakeDamage(int damage)
         {
             currentHealth -= damage;
+            // if (damage >= 5)
+            // {
+            //     _animator.Play("Stagger");
+            // }
         }
 
         void SetHP()
@@ -689,36 +693,64 @@ using UnityEngine.InputSystem;
 
         void OnSwordSlash()
         {
+            if (_equippedWeapon == 0)
+            {
+                AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
+                GameObject hammer = HammerHolder.transform.GetChild(0).gameObject;
+                _attacking = hammer.GetComponent<WeaponAttackPower>().attackPower;
+            }
+            else if (_equippedWeapon == 1)
+            {
+                AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
+                GameObject sword = SwordHolder.transform.GetChild(0).gameObject;
+                _attacking = sword.GetComponent<WeaponAttackPower>().attackPower;
+            }
+            else if (_equippedWeapon == 2)
+            {
+                AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
+                GameObject axe = AxeHolder.transform.GetChild(0).gameObject;
+                _attacking = axe.GetComponent<WeaponAttackPower>().attackPower;
+            }
+            
+            Debug.Log(_attacking);
+        }
+
+        void OnAxeSwing()
+        {
             AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
-            _attacking = true;
+            GameObject axe = AxeHolder.transform.GetChild(0).gameObject;
+            _attacking = axe.GetComponent<WeaponAttackPower>().attackPower;
+            Debug.Log(_attacking);
         }
 
-        void OnEndSwordSlash()
-        {
-            _attacking = false;
-        }
-
-        void OnAxeSlash()
+        void OnAxeRoundSwing()
         {
             AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
-            _attacking = true;
-        }
-
-        void OnEndAxeSlash()
-        {
-            _attacking = false;
-            _animator.SetBool("isAxeSwinging", false);
+            GameObject axe = AxeHolder.transform.GetChild(0).gameObject;
+            _attacking = Mathf.RoundToInt(axe.GetComponent<WeaponAttackPower>().attackPower * 1.2f);
+            Debug.Log(_attacking);
         }
 
         void OnHammerStrike()
         {
             AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
-            _attacking = true;
+            GameObject hammer = HammerHolder.transform.GetChild(0).gameObject;
+            _attacking = hammer.GetComponent<WeaponAttackPower>().attackPower;
+            Debug.Log(_attacking);
         }
 
-        void OnEndHammerStrike()
+        void OnHammerJumpStrike()
         {
-            _attacking = false;
-             _animator.SetBool("isHammerStriking", false);
+            AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
+            GameObject hammer = HammerHolder.transform.GetChild(0).gameObject;
+            _attacking = Mathf.RoundToInt(hammer.GetComponent<WeaponAttackPower>().attackPower * 1.5f);
+            Debug.Log(_attacking);
+        }
+
+        void OnEndAttack()
+        {
+            _attacking = 0;
+            _animator.SetBool("isHammerStriking", false);
+            _animator.SetBool("isAxeSwinging", false);
         }
     }
