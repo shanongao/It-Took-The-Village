@@ -27159,6 +27159,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 704008116}
     m_Modifications:
+    - target: {fileID: 140886691731570147, guid: 9886b54aad4d5482687b294ea433d7e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 511714480980893330, guid: 9886b54aad4d5482687b294ea433d7e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5222901559872988641, guid: 9886b54aad4d5482687b294ea433d7e5,
         type: 3}
       propertyPath: attackPower
@@ -27219,6 +27229,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8223714425817278146, guid: 9886b54aad4d5482687b294ea433d7e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561011291152531444, guid: 9886b54aad4d5482687b294ea433d7e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561011291540735436, guid: 9886b54aad4d5482687b294ea433d7e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 225
+      objectReference: {fileID: 0}
     - target: {fileID: 8561011292169680757, guid: 9886b54aad4d5482687b294ea433d7e5,
         type: 3}
       propertyPath: Inventory
@@ -27234,6 +27259,11 @@ PrefabInstance:
       propertyPath: GameOverScreen
       value: 
       objectReference: {fileID: 885163749}
+    - target: {fileID: 8698751328189663085, guid: 9886b54aad4d5482687b294ea433d7e5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8795454998909323818, guid: 9886b54aad4d5482687b294ea433d7e5,
         type: 3}
       propertyPath: m_Name

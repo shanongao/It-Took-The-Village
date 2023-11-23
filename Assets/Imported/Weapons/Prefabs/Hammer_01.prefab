@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7798732254085007967}
   - component: {fileID: 7246736389675969369}
   - component: {fileID: 4518705966381577096}
+  - component: {fileID: 4926731123383992615}
   m_Layer: 0
   m_Name: Hammer_01
   m_TagString: Untagged
@@ -114,3 +115,16 @@ MonoBehaviour:
   attackPower: 8
   maxAttackPower: 20
   upgradeIncrement: 6
+--- !u!65 &4926731123383992615
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8591273635324488586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.37, z: 0.36}
+  m_Center: {x: -0.000030036455, y: 0.51, z: 0.000018169536}

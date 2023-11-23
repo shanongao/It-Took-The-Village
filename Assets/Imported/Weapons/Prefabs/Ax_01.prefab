@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7698859045550978855}
   - component: {fileID: 6542218581709590649}
   - component: {fileID: 3156562704788876664}
+  - component: {fileID: 8889489071016669403}
   m_Layer: 0
   m_Name: Ax_01
   m_TagString: Untagged
@@ -114,3 +115,16 @@ MonoBehaviour:
   attackPower: 5
   maxAttackPower: 15
   upgradeIncrement: 5
+--- !u!65 &8889489071016669403
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8203073568141072114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.47, y: 0.5, z: 0.13167873}
+  m_Center: {x: -0.07048776, y: 0.45, z: -0.000018243143}

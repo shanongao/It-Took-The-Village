@@ -727,6 +727,8 @@ using UnityEngine.InputSystem;
         {
             AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
             GameObject axe = AxeHolder.transform.GetChild(0).gameObject;
+            BoxCollider collider = axe.GetComponent<BoxCollider>();
+            collider.size = new Vector3(collider.size.x, 1.2f, collider.size.z);
             _attacking = Mathf.RoundToInt(axe.GetComponent<WeaponAttackPower>().attackPower * 1.2f);
             Debug.Log(_attacking);
         }
@@ -743,6 +745,8 @@ using UnityEngine.InputSystem;
         {
             AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
             GameObject hammer = HammerHolder.transform.GetChild(0).gameObject;
+            BoxCollider collider = hammer.GetComponent<BoxCollider>();
+            collider.size = new Vector3(collider.size.x, collider.size.y*2f, collider.size.z*2f);
             _attacking = Mathf.RoundToInt(hammer.GetComponent<WeaponAttackPower>().attackPower * 1.5f);
             Debug.Log(_attacking);
         }
@@ -752,5 +756,17 @@ using UnityEngine.InputSystem;
             _attacking = 0;
             _animator.SetBool("isHammerStriking", false);
             _animator.SetBool("isAxeSwinging", false);
+            if (_equippedWeapon == 0)
+            {
+                GameObject hammer = HammerHolder.transform.GetChild(0).gameObject;
+                BoxCollider collider = hammer.GetComponent<BoxCollider>();
+                collider.size = new Vector3(collider.size.x, 0.37f, 0.36f);
+            }
+            else if (_equippedWeapon == 2)
+            {
+                GameObject axe = AxeHolder.transform.GetChild(0).gameObject;
+                BoxCollider collider = axe.GetComponent<BoxCollider>();
+                collider.size = new Vector3(collider.size.x, 0.5f, collider.size.z);
+            }
         }
     }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2300968513234132779}
   - component: {fileID: 2142021146967332986}
   - component: {fileID: 6656286640054874451}
+  - component: {fileID: 8571667205307500630}
   m_Layer: 0
   m_Name: Sword_01
   m_TagString: Weapon
@@ -114,3 +115,16 @@ MonoBehaviour:
   attackPower: 5
   maxAttackPower: 15
   upgradeIncrement: 5
+--- !u!65 &8571667205307500630
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355312524381552382}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.23, y: 0.93, z: 0.14}
+  m_Center: {x: -0.000030031058, y: 0.65, z: 0.000018085146}
