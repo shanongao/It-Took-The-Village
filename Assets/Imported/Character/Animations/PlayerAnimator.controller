@@ -134,7 +134,7 @@ AnimatorStateMachine:
     m_Position: {x: 20, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2214315150459019266}
-    m_Position: {x: 180, y: 330, z: 0}
+    m_Position: {x: 50, y: 330, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -883797490834594695}
     m_Position: {x: 10, y: 460, z: 0}
@@ -274,7 +274,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DownSwingMoving
+  m_Name: SwordSwingMoving
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -658,7 +658,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DownSwing
+  m_Name: SwordSwing
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

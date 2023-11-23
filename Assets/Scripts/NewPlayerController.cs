@@ -221,6 +221,7 @@ using UnityEngine.InputSystem;
             Action();
             SetHP();
             OnEquip();
+            Debug.Log(transform.position);
         }
 
         private void LateUpdate()
@@ -345,14 +346,7 @@ using UnityEngine.InputSystem;
         {
             if (context.performed && _equippedWeapon >= 0)
             {
-                if (_animator.GetBool("isWalking"))
-                {
-                    _animator.Play("DownSwingMoving");
-                }
-                else
-                {
-                    _animator.Play("DownSwing");
-                }
+                Attack();
             }
         }
 
@@ -399,6 +393,45 @@ using UnityEngine.InputSystem;
                 SwordHolder.transform.GetChild(0).gameObject.SetActive(false);
                 HammerHolder.transform.GetChild(0).gameObject.SetActive(false);
                 AxeHolder.transform.GetChild(0).gameObject.SetActive(true);
+            }
+        }
+
+        private void Attack()
+        {
+            if (_equippedWeapon == 0 && _inventory.activeWeapons[0])
+            {
+                if (_animator.GetBool("isWalking"))
+                {
+                    _animator.Play("HammerStrike");
+                    _animator.SetBool("isHammerStriking", true);
+                }
+                else
+                {
+                    _animator.Play("SwordSwing");
+                }
+            }
+            else if (_equippedWeapon == 1 && _inventory.activeWeapons[1])
+            {
+                if (_animator.GetBool("isWalking"))
+                {
+                    _animator.Play("SwordSwingMoving");
+                }
+                else
+                {
+                    _animator.Play("SwordSwing");
+                }
+            }
+            else if (_equippedWeapon == 2 && _inventory.activeWeapons[2])
+            {
+                if (_animator.GetBool("isWalking"))
+                {
+                    _animator.Play("AxeSwing");
+                    _animator.SetBool("isAxeSwinging", true);
+                }
+                else
+                {
+                    _animator.Play("SwordSwing");
+                }
             }
         }
 
@@ -460,7 +493,7 @@ using UnityEngine.InputSystem;
 
             // move the player
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+                            new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
             // update animator if using character
             // _animator.SetFloat(_animIDSpeed, _animationBlend);
@@ -472,6 +505,16 @@ using UnityEngine.InputSystem;
             temp.transform.rotation = CinemachineCameraTarget.transform.rotation;
             CinemachineCameraTarget.transform.position = temp.transform.TransformPoint(_relativeCameraPosition);
         }
+
+        // void OnAnimatorMove()
+        // {
+        //     if (_animator.GetBool("isHammerStriking"))
+        //     {
+        //         Vector3 newPosition = transform.position;
+        //         newPosition += transform.forward * 100 * Time.deltaTime;
+        //         transform.position = newPosition;
+        //     }
+        // }
 
         private void Action()
         {
@@ -653,5 +696,29 @@ using UnityEngine.InputSystem;
         void OnEndSwordSlash()
         {
             _attacking = false;
+        }
+
+        void OnAxeSlash()
+        {
+            AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
+            _attacking = true;
+        }
+
+        void OnEndAxeSlash()
+        {
+            _attacking = false;
+            _animator.SetBool("isAxeSwinging", false);
+        }
+
+        void OnHammerStrike()
+        {
+            AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
+            _attacking = true;
+        }
+
+        void OnEndHammerStrike()
+        {
+            _attacking = false;
+             _animator.SetBool("isHammerStriking", false);
         }
     }
