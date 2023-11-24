@@ -27196,6 +27196,11 @@ PrefabInstance:
       propertyPath: attackPower
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7129248749442689052, guid: 9886b54aad4d5482687b294ea433d7e5,
+        type: 3}
+      propertyPath: m_Name
+      value: Armor
+      objectReference: {fileID: 0}
     - target: {fileID: 7890445002030060581, guid: 9886b54aad4d5482687b294ea433d7e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27321,6 +27326,11 @@ PrefabInstance:
       propertyPath: GameOverScreen
       value: 
       objectReference: {fileID: 885163749}
+    - target: {fileID: 8672029192445970111, guid: 9886b54aad4d5482687b294ea433d7e5,
+        type: 3}
+      propertyPath: m_Name
+      value: Helmet
+      objectReference: {fileID: 0}
     - target: {fileID: 8698751328189663085, guid: 9886b54aad4d5482687b294ea433d7e5,
         type: 3}
       propertyPath: m_Enabled
