@@ -190,7 +190,7 @@ using UnityEngine.InputSystem;
             _animator = GetComponent<Animator>();
             _controller = GetComponent<CharacterController>();
             _rbody = GetComponent<Rigidbody>();
-            _shieldCollider = ShieldHolder.GetComponent<BoxCollider>();
+            _shieldCollider = ShieldHolder.transform.GetChild(0).gameObject.GetComponent<BoxCollider>();
             _inventory = Inventory.GetComponent<equipWeapon>();
             InitWeapons();
 
@@ -662,7 +662,14 @@ using UnityEngine.InputSystem;
 
         void TakeDamage(int damage)
         {
-            currentHealth -= damage;
+            if (currentHealth > 0)
+            {
+                currentHealth -= damage;
+            }
+            else
+            {
+                currentHealth = 0;
+            }
             // if (damage >= 5)
             // {
             //     _animator.Play("Stagger");

@@ -28,13 +28,27 @@ public class EnemyAttackPower : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Shield") && _playerController._blocking)
             {
-                Damage = 0;
-                _damageTimeout = 0.5f;
+                Debug.Log("Blocked");
+                GameObject shield = other.gameObject;
+                int defense = shield.GetComponent<ShieldDefense>().defense;
+                float blockRate = shield.GetComponent<ShieldDefense>().blockRate;
+                if (Damage > defense)
+                {
+                    Damage = Mathf.RoundToInt(MaxDamage * blockRate);
+                }
+                else
+                {
+                    Damage = 0;
+                }
+
+                Animator animator = GameObject.FindWithTag("Player").GetComponent<Animator>();
+                animator.Play("BlockImpact");
+                _damageTimeout = 0.1f;
             }
             else if (other.gameObject.CompareTag("Player"))
             {
                 Damage = MaxDamage;
-                _damageTimeout = 0.5f;
+                _damageTimeout = 0.1f;
             }
         }
     }
