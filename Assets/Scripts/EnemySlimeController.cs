@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemySlimeController : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class EnemySlimeController : MonoBehaviour
     public GameObject meleeCollider;
     [Range(0, 5)] public float FootstepVolume = 2f;
     public AudioClip FootstepSound;
+    public GameObject HealthBar;
+    public float lerp = 0.01f;
+    public int HealthBarHeight = 150;
 
     [Range(0, 1)] public float AudioVolume = 0.75f;
     public AudioClip AttackSound;
@@ -25,6 +29,8 @@ public class EnemySlimeController : MonoBehaviour
     private Animator _animator;
     private bool _alive = true;
     private float _distanceToPlayer;
+    private Slider _healthBarSlider;
+    private float _damageTimeout = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,28 +41,44 @@ public class EnemySlimeController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _nav = GetComponent<NavMeshAgent>();
         meleeCollider.SetActive(false);
+
+        _healthBarSlider = HealthBar.GetComponent<Slider>();
+        _healthBarSlider.maxValue = HP;
+        _healthBarSlider.value = HP;
+        Vector3 position = Camera.main.WorldToScreenPoint(transform.position);
+        HealthBar.transform.position = new Vector3(position.x, position.y+HealthBarHeight, position.z);
+        HealthBar.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        _damageTimeout -= Time.deltaTime;
         _distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
 
         if (_alive)
         {
             DetectPlayer();
         }
+        SetHeath();
     }
 
     void DetectPlayer()
     {
+        // Debug.Log(_distanceToPlayer);
         if (_distanceToPlayer <= attackDistance)
         {
+            HealthBar.SetActive(true);
             AttackPlayer();
         }
-        else if (_distanceToPlayer <= detectionDistance)
+        else if (_distanceToPlayer <= detectionDistance && _distanceToPlayer > attackDistance)
         {
+            HealthBar.SetActive(true);
             ChasePlayer();
+        }
+        else
+        {
+            HealthBar.SetActive(false);
         }
     }
 
@@ -90,20 +112,24 @@ public class EnemySlimeController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Weapon")) 
+        if (_damageTimeout <= 0)
         {
-            if (_playerController._attacking > 0)
+            if (other.gameObject.CompareTag("Weapon")) 
             {
-                AudioSource.PlayClipAtPoint(OnHitSound, transform.position, AudioVolume);
-                // take damage
-                HP -= _playerController._attacking;
+                if (_playerController._attacking > 0)
+                {
+                    AudioSource.PlayClipAtPoint(OnHitSound, transform.position, AudioVolume);
+                    // take damage
+                    HP -= _playerController._attacking;
+                }
             }
-        }
 
-        if (HP <= 0)
-        {
-            _alive = false;
-            _animator.Play("Die");
+            if (HP <= 0)
+            {
+                _alive = false;
+                _animator.Play("Die");
+            }
+            _damageTimeout = 0.1f;
         }
     }
 
@@ -120,5 +146,13 @@ public class EnemySlimeController : MonoBehaviour
     void OnBounce()
     {
         AudioSource.PlayClipAtPoint(FootstepSound, transform.position, AudioVolume);
+    }
+
+    void SetHeath()
+    {
+        Vector3 position = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 healthBarPosition = new Vector3(position.x, position.y+HealthBarHeight, position.z);
+        HealthBar.transform.position = Vector3.Lerp(HealthBar.transform.position, healthBarPosition, lerp);
+        _healthBarSlider.value = HP;
     }
 }

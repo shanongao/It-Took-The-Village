@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BossEnemyController : MonoBehaviour
 {
@@ -15,8 +16,11 @@ public class BossEnemyController : MonoBehaviour
     public float bulletSpeed = 100;
     public float detectionDistance = 5f;
     public int HP = 50;
+    public GameObject HealthBar;
     public GameObject BossUI;
     public string BossName;
+    private Slider _healthBarSlider;
+    private float _damageTimeout = 0f;
 
     [Range(0, 1)] public float AudioVolume = 0.75f;
     public AudioClip BulletSound;
@@ -35,10 +39,16 @@ public class BossEnemyController : MonoBehaviour
         _playerController = _player.GetComponent<NewPlayerController>();
         _animator = GetComponent<Animator>();
         bulletTime = timer;
+
+        _healthBarSlider = HealthBar.GetComponent<Slider>();
+        _healthBarSlider.maxValue = HP;
+        _healthBarSlider.value = HP;
+        HealthBar.SetActive(false);
     }
 
     void Update()
     {
+        _damageTimeout -= Time.deltaTime;
         if (_alive)
         {
             DetectPlayer();
@@ -50,6 +60,7 @@ public class BossEnemyController : MonoBehaviour
         float distance = Vector3.Distance(_player.transform.position, transform.position);
         if (distance <= detectionDistance)
         {
+            HealthBar.SetActive(true);
             BossUI.SetActive(true);
             TextMeshProUGUI tmp = BossUI.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
             tmp.SetText(BossName);
@@ -58,6 +69,7 @@ public class BossEnemyController : MonoBehaviour
         }
         else
         {
+            HealthBar.SetActive(false);
             BossUI.SetActive(false);
         }
     }
@@ -88,20 +100,23 @@ public class BossEnemyController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Weapon")) 
+        if (_damageTimeout <= 0)
         {
-            if (_playerController._attacking > 0)
+            if (other.gameObject.CompareTag("Weapon")) 
             {
-                AudioSource.PlayClipAtPoint(OnHitSound, transform.position, AudioVolume);
-                // take damage
-                HP -= _playerController._attacking;
+                if (_playerController._attacking > 0)
+                {
+                    AudioSource.PlayClipAtPoint(OnHitSound, transform.position, AudioVolume);
+                    // take damage
+                    HP -= _playerController._attacking;
+                }
             }
-        }
 
-        if (HP <= 0)
-        {
-            _alive = false;
-            _animator.Play("Die");
+            if (HP <= 0)
+            {
+                _alive = false;
+                _animator.Play("Die");
+            }
         }
     }
 
@@ -119,5 +134,10 @@ public class BossEnemyController : MonoBehaviour
     void OnDeath()
     {
         AudioSource.PlayClipAtPoint(DeathSound, transform.position, AudioVolume);
+    }
+
+    void SetHeath()
+    {
+        _healthBarSlider.value = HP;
     }
 }
