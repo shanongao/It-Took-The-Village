@@ -22964,7 +22964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialUi: {fileID: 1559999332}
-  startScene: 
+  startScene: Act_1
 --- !u!1 &1116318279
 GameObject:
   m_ObjectHideFlags: 0
