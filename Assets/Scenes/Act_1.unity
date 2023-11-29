@@ -22243,6 +22243,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8324878500490236775, guid: f90f74c8bd6b7450db0dedc95bde2a05,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f90f74c8bd6b7450db0dedc95bde2a05, type: 3}
 --- !u!4 &930378815 stripped
@@ -25492,6 +25497,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8324878500490236775, guid: f90f74c8bd6b7450db0dedc95bde2a05,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f90f74c8bd6b7450db0dedc95bde2a05, type: 3}
 --- !u!4 &1062324302 stripped
@@ -27904,6 +27914,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cafba949df75fc04c985cdd74d88cd97, type: 3}
+--- !u!1 &1130957730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8795454998909323818, guid: 9886b54aad4d5482687b294ea433d7e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1425192305}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1132460392
 GameObject:
   m_ObjectHideFlags: 0
@@ -28707,6 +28723,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Coin (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8324878500490236775, guid: f90f74c8bd6b7450db0dedc95bde2a05,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f90f74c8bd6b7450db0dedc95bde2a05, type: 3}
@@ -35483,6 +35504,11 @@ PrefabInstance:
       objectReference: {fileID: 248889408}
     - target: {fileID: 8561011292169680757, guid: 9886b54aad4d5482687b294ea433d7e5,
         type: 3}
+      propertyPath: coinSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ba8aef5d301b5ca48926c60648ddccb9, type: 3}
+    - target: {fileID: 8561011292169680757, guid: 9886b54aad4d5482687b294ea433d7e5,
+        type: 3}
       propertyPath: countText
       value: 
       objectReference: {fileID: 2061967833}
@@ -35510,6 +35536,102 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1425192305}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1425192313
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130957730}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ba8aef5d301b5ca48926c60648ddccb9, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1426179162
 GameObject:
   m_ObjectHideFlags: 0
@@ -41687,6 +41809,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 8324878500490236775, guid: f90f74c8bd6b7450db0dedc95bde2a05,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f90f74c8bd6b7450db0dedc95bde2a05, type: 3}
 --- !u!4 &1722547595 stripped
@@ -43616,6 +43743,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Coin (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8324878500490236775, guid: f90f74c8bd6b7450db0dedc95bde2a05,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f90f74c8bd6b7450db0dedc95bde2a05, type: 3}
@@ -51271,6 +51403,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Coin (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8324878500490236775, guid: f90f74c8bd6b7450db0dedc95bde2a05,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f90f74c8bd6b7450db0dedc95bde2a05, type: 3}

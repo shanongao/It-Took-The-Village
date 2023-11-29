@@ -17,6 +17,7 @@ TagManager:
   - Door
   - ButtonPrompt
   - DialogCanvas
+  - Coin
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,7 @@ public class coin : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currencyText;
     [SerializeField] private GameObject[] children;
     [SerializeField] private AudioClip coinSound;
+    [SerializeField] private string loadCurrency;
 
     private AudioSource audioSource;
 
@@ -35,9 +36,10 @@ public class coin : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayCoinSound();
+            //PlayCoinSound();
+            audioSource.PlayOneShot(coinSound);
             UpdateCurrency();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -56,4 +58,14 @@ public class coin : MonoBehaviour
             audioSource.PlayOneShot(coinSound); // Play the coin sound effect
         }
     }
+
+    //private void OnDisable()
+    //{
+    //    loadCurrency = currencyText.text;
+    //}
+
+    //private void OnEnable()
+    //{
+    //    currencyText.text = loadCurrency;
+    //}
 }

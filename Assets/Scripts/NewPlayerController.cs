@@ -51,6 +51,8 @@ using UnityEngine.InputSystem;
         [Range(0, 1)] public float AudioVolume = 0.75f;
         public AudioClip SwordSlashSound;
         public AudioClip DamageSound;
+        [SerializeField] private AudioClip coinSound;
+        private AudioSource audioSource;
 
         [Space(10)]
         [Tooltip("The height the player can jump")]
@@ -651,6 +653,11 @@ using UnityEngine.InputSystem;
             {
                 EnemyAttackPower attack = other.gameObject.GetComponent<EnemyAttackPower>();
                 damage = attack.Damage;
+            }
+
+            if (other.gameObject.CompareTag("Coin"))
+            {
+                audioSource.PlayOneShot(coinSound);
             }
 
             if (_damageTimeout <= 0)
