@@ -986,8 +986,8 @@ GameObject:
   - component: {fileID: 2341230230045749522}
   - component: {fileID: 2341230230045749525}
   - component: {fileID: 2341230230045749523}
-  - component: {fileID: 3223681972958198973}
-  - component: {fileID: 2202002600189217361}
+  - component: {fileID: 7825986570330810861}
+  - component: {fileID: 7568812562299166984}
   m_Layer: 0
   m_Name: VillagerWalking
   m_TagString: NPC
@@ -1070,8 +1070,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &3223681972958198973
-CapsuleCollider:
+--- !u!114 &7825986570330810861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3223681972958198974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a53c36639365b4bb09de3796def92d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompt: {fileID: 8681131123209611937}
+  dialogCanvas: {fileID: 3576143628203103890}
+  promptText: Press E to talk
+  dialogueText: []
+--- !u!135 &7568812562299166984
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1080,26 +1096,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &2202002600189217361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3223681972958198974}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddfbcccdc7a5b4ca9a8de7716fc14189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prompt: {fileID: 8681131123209611937}
-  dialogCanvas: {fileID: 3576143628203103890}
-  promptText: 
-  dialogueText: []
+  serializedVersion: 2
+  m_Radius: 1.2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3320233216978577562
 GameObject:
   m_ObjectHideFlags: 0

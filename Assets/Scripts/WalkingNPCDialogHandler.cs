@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class NPCDialogHandler : MonoBehaviour
+public class WalkingNPCDialogHandler : MonoBehaviour
 {
-    public static NPCDialogHandler ActiveDialogHandler;
+    public static WalkingNPCDialogHandler ActiveDialogHandler;
 
     public GameObject prompt;
     public GameObject dialogCanvas;
@@ -17,6 +17,7 @@ public class NPCDialogHandler : MonoBehaviour
     private bool isInRange;
     private GameObject player;
     private NewPlayerController playerController;
+    private Animator _animator;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class NPCDialogHandler : MonoBehaviour
     {
         prompt.SetActive(false);
         dialogCanvas.SetActive(false);
+        _animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -109,6 +111,11 @@ public class NPCDialogHandler : MonoBehaviour
         {
             playerController.enabled = false;
         }
+        if (player != null)
+        {
+            transform.LookAt(player.transform);
+        }
+        _animator.SetBool("isTalking", true);
     }
 
     private void ResumePlayerMovement()
@@ -117,5 +124,6 @@ public class NPCDialogHandler : MonoBehaviour
         {
             playerController.enabled = true;
         }
+        _animator.SetBool("isTalking", false);
     }
 }

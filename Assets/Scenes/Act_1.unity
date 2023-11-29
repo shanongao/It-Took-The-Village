@@ -12904,26 +12904,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 24243993}
     m_Modifications:
-    - target: {fileID: 2202002600189217361, guid: c7a4fa2b9514143668a65904679c0f61,
-        type: 3}
-      propertyPath: prompt
-      value: 
-      objectReference: {fileID: 1007756493}
-    - target: {fileID: 2202002600189217361, guid: c7a4fa2b9514143668a65904679c0f61,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2202002600189217361, guid: c7a4fa2b9514143668a65904679c0f61,
-        type: 3}
-      propertyPath: promptText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2202002600189217361, guid: c7a4fa2b9514143668a65904679c0f61,
-        type: 3}
-      propertyPath: dialogCanvas
-      value: 
-      objectReference: {fileID: 7520216772859079166}
     - target: {fileID: 2879771586937792004, guid: c7a4fa2b9514143668a65904679c0f61,
         type: 3}
       propertyPath: m_RootOrder
@@ -32681,21 +32661,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 320949247}
     m_Modifications:
-    - target: {fileID: 2202002600189217361, guid: c7a4fa2b9514143668a65904679c0f61,
-        type: 3}
-      propertyPath: promptText
-      value: Press E to talk
-      objectReference: {fileID: 0}
-    - target: {fileID: 2202002600189217361, guid: c7a4fa2b9514143668a65904679c0f61,
-        type: 3}
-      propertyPath: dialogueText.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2202002600189217361, guid: c7a4fa2b9514143668a65904679c0f61,
-        type: 3}
-      propertyPath: dialogueText.Array.data[0]
-      value: Weeeeeoooweeeee the farmers market is today!!!
-      objectReference: {fileID: 0}
     - target: {fileID: 2879771586937792004, guid: c7a4fa2b9514143668a65904679c0f61,
         type: 3}
       propertyPath: m_RootOrder
@@ -36212,26 +36177,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 320949247}
     m_Modifications:
-    - target: {fileID: 2202002600189217361, guid: c7a4fa2b9514143668a65904679c0f61,
-        type: 3}
-      propertyPath: promptText
-      value: Press E to talk
-      objectReference: {fileID: 0}
-    - target: {fileID: 2202002600189217361, guid: c7a4fa2b9514143668a65904679c0f61,
-        type: 3}
-      propertyPath: dialogueText.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2202002600189217361, guid: c7a4fa2b9514143668a65904679c0f61,
-        type: 3}
-      propertyPath: dialogueText.Array.data[0]
-      value: ...Hi..Hi...hi there friend.. do you have a minute?
-      objectReference: {fileID: 0}
-    - target: {fileID: 2202002600189217361, guid: c7a4fa2b9514143668a65904679c0f61,
-        type: 3}
-      propertyPath: dialogueText.Array.data[1]
-      value: I've been paranoid lately. Do you feel it?
-      objectReference: {fileID: 0}
     - target: {fileID: 2879771586937792004, guid: c7a4fa2b9514143668a65904679c0f61,
         type: 3}
       propertyPath: m_RootOrder
