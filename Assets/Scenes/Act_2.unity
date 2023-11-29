@@ -1139,6 +1139,7 @@ GameObject:
   - component: {fileID: 29350018}
   - component: {fileID: 29350017}
   - component: {fileID: 29350021}
+  - component: {fileID: 29350022}
   m_Layer: 0
   m_Name: hammer
   m_TagString: Untagged
@@ -1258,6 +1259,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &29350022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29350015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa63666885e84116946a60a6da2b463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPower: 3
+  maxAttackPower: 15
+  upgradeIncrement: 1
 --- !u!1 &31055796
 GameObject:
   m_ObjectHideFlags: 0
@@ -15295,6 +15311,7 @@ GameObject:
   - component: {fileID: 406784393}
   - component: {fileID: 406784392}
   - component: {fileID: 406784396}
+  - component: {fileID: 406784397}
   m_Layer: 0
   m_Name: axe
   m_TagString: Untagged
@@ -15414,6 +15431,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &406784397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406784390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa63666885e84116946a60a6da2b463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPower: 4
+  maxAttackPower: 15
+  upgradeIncrement: 1
 --- !u!4 &408903392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8509434674601493261, guid: cafba949df75fc04c985cdd74d88cd97,
@@ -39042,7 +39074,7 @@ PrefabInstance:
     - target: {fileID: 2947380837484411433, guid: e6f9a697b98fb4efa84711f5ad97a70d,
         type: 3}
       propertyPath: m_Name
-      value: VillagerSick (7)
+      value: Shop
       objectReference: {fileID: 0}
     - target: {fileID: 5205739516690298201, guid: e6f9a697b98fb4efa84711f5ad97a70d,
         type: 3}
@@ -41588,6 +41620,11 @@ PrefabInstance:
       propertyPath: Inventory
       value: 
       objectReference: {fileID: 248889408}
+    - target: {fileID: 8561011292169680757, guid: 9886b54aad4d5482687b294ea433d7e5,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8561011292169680757, guid: 9886b54aad4d5482687b294ea433d7e5,
         type: 3}
       propertyPath: countText
@@ -58020,7 +58057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPower: 5
   maxAttackPower: 15
-  upgradeIncrement: 5
+  upgradeIncrement: 1
 --- !u!1 &1513497257
 GameObject:
   m_ObjectHideFlags: 0
@@ -66619,13 +66656,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompt: {fileID: 1693495481}
   dialogCanvas: {fileID: 1485150733}
-  promptText: Press E to talk
-  dialogueText:
-  - Shop! Mmm.
-  - You want it?
-  - It's yours my friend -- as long as you have enough coins.
+  promptText: Press E to talk to blacksmith about upgrading your weapons
+  currencyText: {fileID: 616416885}
   menu: {fileID: 1187100518}
-  prefabs: []
+  prefabs:
+  - {fileID: 29350015}
+  - {fileID: 1512970130}
+  - {fileID: 406784390}
+  currWeapon: {fileID: 0}
 --- !u!1 &1733914534
 GameObject:
   m_ObjectHideFlags: 0
