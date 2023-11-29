@@ -22,6 +22,7 @@ public class ShopHandler : MonoBehaviour
     [Header("Weapon Prefabs")]
     [SerializeField] private GameObject[] prefabs;
     [SerializeField] private GameObject currWeapon;
+    private int cost = 0;
 
     private bool canPurchase;
 
@@ -84,6 +85,11 @@ public class ShopHandler : MonoBehaviour
                 CloseDialog();
                 ResumePlayerMovement();
                 inDialog = false;
+
+                string currentCurrency = currencyText.text;
+                int.TryParse(currentCurrency.Substring(1), out int originalNumber);
+                int newCurr = originalNumber - cost;
+                currencyText.text = $"${newCurr}";
             }
         }
     }
@@ -134,9 +140,11 @@ public class ShopHandler : MonoBehaviour
             int.TryParse(currentCurrency.Substring(1), out int originalNumber);
             int money = originalNumber;
             int price = prices[weapon];
+         
             if (price <= money)
             {
                 canPurchase = true;
+                cost = price;
                 return $"Ahh, they all come to me, I can upgrade your precious {weapons[weapon]}" +
                     $" for ${price} and make you mightier! Since you have ${money}, this is perfect " +
                     $"for you! Press Enter to proceees and get one step " +
