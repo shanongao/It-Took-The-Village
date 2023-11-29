@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 07ccf814212284029997cd790ad211be
+guid: 799c5dfb25a5648dea7409999ed274be
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -56,7 +56,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.35832122
+        functionName: OnFootstep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: e89b74b8260394903abb3ac5cc217f51,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8265849
+        functionName: OnFootstep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: e89b74b8260394903abb3ac5cc217f51,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
