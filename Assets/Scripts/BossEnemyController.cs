@@ -67,7 +67,7 @@ public class BossEnemyController : MonoBehaviour
             transform.LookAt(_player.transform);
             ShootAtPlayer();
         }
-        else
+        else if (distance > detectionDistance*1.5)
         {
             HealthBar.SetActive(false);
             BossUI.SetActive(false);

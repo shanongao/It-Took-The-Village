@@ -35474,11 +35474,6 @@ PrefabInstance:
       objectReference: {fileID: 248889408}
     - target: {fileID: 8561011292169680757, guid: 9886b54aad4d5482687b294ea433d7e5,
         type: 3}
-      propertyPath: coinSound
-      value: 
-      objectReference: {fileID: 8300000, guid: ba8aef5d301b5ca48926c60648ddccb9, type: 3}
-    - target: {fileID: 8561011292169680757, guid: 9886b54aad4d5482687b294ea433d7e5,
-        type: 3}
       propertyPath: countText
       value: 
       objectReference: {fileID: 2061967833}

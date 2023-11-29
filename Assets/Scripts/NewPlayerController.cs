@@ -51,6 +51,7 @@ using UnityEngine.InputSystem;
         [Range(0, 1)] public float AudioVolume = 0.75f;
         public AudioClip SwordSlashSound;
         public AudioClip DamageSound;
+        public AudioClip ShieldingAudioClip;
         [SerializeField] private AudioClip coinSound;
         private AudioSource audioSource;
 
@@ -746,7 +747,7 @@ using UnityEngine.InputSystem;
             AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
             GameObject axe = AxeHolder.transform.GetChild(0).gameObject;
             BoxCollider collider = axe.GetComponent<BoxCollider>();
-            collider.size = new Vector3(collider.size.x, 1.2f, collider.size.z);
+            collider.size = new Vector3(collider.size.x, 3f, collider.size.z*1.5f);
             _attacking = Mathf.RoundToInt(axe.GetComponent<WeaponAttackPower>().attackPower * 1.2f);
             Debug.Log(_attacking);
         }
@@ -785,6 +786,14 @@ using UnityEngine.InputSystem;
                 GameObject axe = AxeHolder.transform.GetChild(0).gameObject;
                 BoxCollider collider = axe.GetComponent<BoxCollider>();
                 collider.size = new Vector3(collider.size.x, 0.5f, collider.size.z);
+            }
+        }
+
+        void OnShieldImpact(AnimationEvent animationEvent)
+        {
+            if (animationEvent.animatorClipInfo.weight > 0.5f)
+            {
+                AudioSource.PlayClipAtPoint(ShieldingAudioClip, transform.TransformPoint(_controller.center), AudioVolume);
             }
         }
     }

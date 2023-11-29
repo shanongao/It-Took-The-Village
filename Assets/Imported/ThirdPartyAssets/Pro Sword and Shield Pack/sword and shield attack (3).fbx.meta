@@ -57,7 +57,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.209883
+      - time: 0.14536688
         functionName: OnAxeRoundSwing
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: e89b74b8260394903abb3ac5cc217f51,
@@ -65,7 +65,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.82052565
+      - time: 0.7584909
         functionName: OnEndAttack
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: e89b74b8260394903abb3ac5cc217f51,

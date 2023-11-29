@@ -2871,6 +2871,8 @@ MonoBehaviour:
   AudioVolume: 0.9
   SwordSlashSound: {fileID: 8300000, guid: ad10399abb9431a40b001f8ea803e810, type: 3}
   DamageSound: {fileID: 8300000, guid: 446dee533cec9a448b8f3df7254e64ff, type: 3}
+  ShieldingAudioClip: {fileID: 8300000, guid: 8c4a22739028d4e17ae334f3a3467e38, type: 3}
+  coinSound: {fileID: 8300000, guid: ba8aef5d301b5ca48926c60648ddccb9, type: 3}
   JumpHeight: 1.2
   Gravity: -20
   JumpTimeout: 0.5
