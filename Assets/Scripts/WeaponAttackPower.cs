@@ -8,7 +8,7 @@ public class WeaponAttackPower : MonoBehaviour
     public int maxAttackPower = 15;
     public int upgradeIncrement = 5;
 
-    bool UpgradeWeapon()
+    public bool UpgradeWeapon()
     {
         if (attackPower < maxAttackPower)
         {
@@ -17,6 +17,7 @@ public class WeaponAttackPower : MonoBehaviour
             {
                 attackPower = maxAttackPower;
             }
+            Debug.Log("Upgrading Weapon");
             return true;
         }
         else
