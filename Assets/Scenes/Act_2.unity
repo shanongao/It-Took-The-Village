@@ -76346,7 +76346,7 @@ PrefabInstance:
     - target: {fileID: 9053188998968932229, guid: c97733cb4073d41b28c68f4fa9266e38,
         type: 3}
       propertyPath: dialogueText.Array.data[0]
-      value: fewf
+      value: fdsa
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c97733cb4073d41b28c68f4fa9266e38, type: 3}

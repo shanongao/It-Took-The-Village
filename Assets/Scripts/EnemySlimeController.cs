@@ -97,6 +97,7 @@ public class EnemySlimeController : MonoBehaviour
         _nav.isStopped = true;
         _nav.velocity = Vector3.zero;
         transform.LookAt(_player.transform);
+        transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,0);
     }
 
     void MeleeDamage()

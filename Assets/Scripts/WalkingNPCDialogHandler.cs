@@ -114,6 +114,7 @@ public class WalkingNPCDialogHandler : MonoBehaviour
         if (player != null)
         {
             transform.LookAt(player.transform);
+            transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,0);
         }
         _animator.SetBool("isTalking", true);
     }

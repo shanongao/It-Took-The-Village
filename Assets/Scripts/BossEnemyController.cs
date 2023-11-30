@@ -66,6 +66,7 @@ public class BossEnemyController : MonoBehaviour
             TextMeshProUGUI tmp = BossUI.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
             tmp.SetText(BossName);
             transform.LookAt(_player.transform);
+            transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,0);
             ShootAtPlayer();
         }
         else if (distance > detectionDistance*1.5)

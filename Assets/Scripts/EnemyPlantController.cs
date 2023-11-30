@@ -85,6 +85,7 @@ public class EnemyPlantController : MonoBehaviour
         {
             HealthBar.SetActive(true);
             transform.LookAt(_player.transform);
+            transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,0);
             ShootAtPlayer();
         }
         else if (Vector3.Distance(_player.transform.position, transform.position) > detectionDistance*2)
