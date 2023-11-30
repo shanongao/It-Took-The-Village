@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyAttackPower : MonoBehaviour
 {
-    public int MaxDamage = 5;
     public int Damage = 5;
 
     private float _damageTimeout = 0f;
@@ -14,7 +13,6 @@ public class EnemyAttackPower : MonoBehaviour
     void Start()
     {
         _playerController = GameObject.FindWithTag("Player").GetComponent<NewPlayerController>();
-        Damage = MaxDamage;
     }
 
     // Update is called once per frame
@@ -34,11 +32,7 @@ public class EnemyAttackPower : MonoBehaviour
                 float blockRate = shield.GetComponent<ShieldDefense>().blockRate;
                 if (Damage > defense)
                 {
-                    Damage = Mathf.RoundToInt(MaxDamage * blockRate);
-                }
-                else
-                {
-                    Damage = 0;
+                    _playerController.TakeDamage(Mathf.RoundToInt(Damage * blockRate));
                 }
 
                 Animator animator = GameObject.FindWithTag("Player").GetComponent<Animator>();
@@ -47,12 +41,10 @@ public class EnemyAttackPower : MonoBehaviour
             
             else if (other.gameObject.CompareTag("Player"))
             {
-                Damage = MaxDamage;
+                _playerController.TakeDamage(Mathf.RoundToInt(Damage));
             }
 
-            _playerController.TakeDamage(Damage);
             _damageTimeout = 0.1f;
-            Damage = MaxDamage;
         }
     }
 }

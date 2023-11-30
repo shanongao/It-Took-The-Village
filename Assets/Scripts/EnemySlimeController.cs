@@ -31,6 +31,7 @@ public class EnemySlimeController : MonoBehaviour
     private float _distanceToPlayer;
     private Slider _healthBarSlider;
     private float _damageTimeout = 0f;
+    private float _timeout = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,7 @@ public class EnemySlimeController : MonoBehaviour
     void Update()
     {
         _damageTimeout -= Time.deltaTime;
+        _timeout -= Time.deltaTime;
         _distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
 
         if (_alive)
@@ -65,21 +67,27 @@ public class EnemySlimeController : MonoBehaviour
 
     void DetectPlayer()
     {
-        // Debug.Log(_distanceToPlayer);
-        if (_distanceToPlayer <= attackDistance)
+        if (_timeout <= 0)
         {
-            HealthBar.SetActive(true);
-            AttackPlayer();
+            // Debug.Log(_distanceToPlayer);
+            if (_distanceToPlayer <= attackDistance)
+            {
+                HealthBar.SetActive(true);
+                AttackPlayer();
+            }
+            else if (_distanceToPlayer <= detectionDistance)
+            {
+                HealthBar.SetActive(true);
+                ChasePlayer();
+            }
+            else
+            {
+                HealthBar.SetActive(false);
+            }
+
+            _timeout = 0.2f;
         }
-        else if (_distanceToPlayer <= detectionDistance && _distanceToPlayer > attackDistance)
-        {
-            HealthBar.SetActive(true);
-            ChasePlayer();
-        }
-        else
-        {
-            HealthBar.SetActive(false);
-        }
+        
     }
 
     void ChasePlayer()

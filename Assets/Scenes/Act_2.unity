@@ -47851,12 +47851,13 @@ PrefabInstance:
     - target: {fileID: 5205739516690298201, guid: e6f9a697b98fb4efa84711f5ad97a70d,
         type: 3}
       propertyPath: dialogueText.Array.data[5]
-      value: You can also equip by pressing the number keys.
+      value: Did you know that you can perform special attacks with certain weapon
+        types?
       objectReference: {fileID: 0}
     - target: {fileID: 5205739516690298201, guid: e6f9a697b98fb4efa84711f5ad97a70d,
         type: 3}
       propertyPath: dialogueText.Array.data[6]
-      value: Left click to attack and right click to block.
+      value: Try attacking while moving forward when you have Hammer or Axe equipped.
       objectReference: {fileID: 0}
     - target: {fileID: 5205739516690298201, guid: e6f9a697b98fb4efa84711f5ad97a70d,
         type: 3}

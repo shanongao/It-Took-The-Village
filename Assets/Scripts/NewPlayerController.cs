@@ -661,12 +661,8 @@ using UnityEngine.InputSystem;
                 AudioSource.PlayClipAtPoint(coinSound, transform.TransformPoint(_controller.center), AudioVolume);
             }
 
-            if (_damageTimeout <= 0)
+            if (_damageTimeout <= 0 && damage > 0)
             {
-                if (damage > 0)
-                {
-                    AudioSource.PlayClipAtPoint(DamageSound, transform.TransformPoint(_controller.center), AudioVolume);
-                }
                 TakeDamage(damage);
                 _damageTimeout = 0.1f;
             }
@@ -674,6 +670,8 @@ using UnityEngine.InputSystem;
 
         public void TakeDamage(int damage)
         {
+            AudioSource.PlayClipAtPoint(DamageSound, transform.TransformPoint(_controller.center), AudioVolume);
+
             if (currentHealth > 0)
             {
                 currentHealth -= damage;
