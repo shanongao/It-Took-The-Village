@@ -609,7 +609,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.4543011
+      - time: 0.35217598
+        functionName: OnVerticalAxe
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 355bb5a1b0c6b4f52b3e70c077b1cf52,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3719766
         functionName: MeleeDamage
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 355bb5a1b0c6b4f52b3e70c077b1cf52,
@@ -619,14 +627,6 @@ ModelImporter:
         messageOptions: 0
       - time: 0.5089049
         functionName: EndMeleeDamage
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 355bb5a1b0c6b4f52b3e70c077b1cf52,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.38123167
-        functionName: OnVerticalAxe
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 355bb5a1b0c6b4f52b3e70c077b1cf52,
           type: 3}

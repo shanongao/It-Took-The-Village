@@ -14,6 +14,7 @@ public class EnemyAttackPower : MonoBehaviour
     void Start()
     {
         _playerController = GameObject.FindWithTag("Player").GetComponent<NewPlayerController>();
+        Damage = MaxDamage;
     }
 
     // Update is called once per frame
@@ -28,7 +29,6 @@ public class EnemyAttackPower : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Shield") && _playerController._blocking)
             {
-                Debug.Log("Blocked");
                 GameObject shield = other.gameObject;
                 int defense = shield.GetComponent<ShieldDefense>().defense;
                 float blockRate = shield.GetComponent<ShieldDefense>().blockRate;
@@ -43,13 +43,16 @@ public class EnemyAttackPower : MonoBehaviour
 
                 Animator animator = GameObject.FindWithTag("Player").GetComponent<Animator>();
                 animator.Play("BlockImpact");
-                _damageTimeout = 0.1f;
             }
+            
             else if (other.gameObject.CompareTag("Player"))
             {
                 Damage = MaxDamage;
-                _damageTimeout = 0.1f;
             }
+
+            _playerController.TakeDamage(Damage);
+            _damageTimeout = 0.1f;
+            Damage = MaxDamage;
         }
     }
 }

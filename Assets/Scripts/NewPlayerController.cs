@@ -650,11 +650,11 @@ using UnityEngine.InputSystem;
                 Destroy(other.gameObject);
             }
 
-            if (other.gameObject.CompareTag("EnemyMelee"))
-            {
-                EnemyAttackPower attack = other.gameObject.GetComponent<EnemyAttackPower>();
-                damage = attack.Damage;
-            }
+            // if (other.gameObject.CompareTag("EnemyMelee"))
+            // {
+            //     EnemyAttackPower attack = other.gameObject.GetComponent<EnemyAttackPower>();
+            //     damage = attack.Damage;
+            // }
 
             if (other.gameObject.CompareTag("Coin"))
             {
@@ -668,11 +668,11 @@ using UnityEngine.InputSystem;
                     AudioSource.PlayClipAtPoint(DamageSound, transform.TransformPoint(_controller.center), AudioVolume);
                 }
                 TakeDamage(damage);
-                _damageTimeout = 0.5f;
+                _damageTimeout = 0.1f;
             }
         }
 
-        void TakeDamage(int damage)
+        public void TakeDamage(int damage)
         {
             if (currentHealth > 0)
             {
