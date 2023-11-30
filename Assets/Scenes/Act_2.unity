@@ -47656,6 +47656,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 894393153}
     m_Modifications:
+    - target: {fileID: 212515455608658704, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
         type: 3}
       propertyPath: m_RootOrder
@@ -47771,6 +47776,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogueText.Array.data[9]
       value: You can try opening it if you wish *cough cough*
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687130963121636838, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9194163111312549335, guid: e6f9a697b98fb4efa84711f5ad97a70d,
         type: 3}
