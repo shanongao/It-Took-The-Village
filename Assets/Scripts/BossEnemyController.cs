@@ -53,6 +53,7 @@ public class BossEnemyController : MonoBehaviour
         {
             DetectPlayer();
         }
+        SetHeath();
     }
 
     void DetectPlayer()
@@ -117,6 +118,7 @@ public class BossEnemyController : MonoBehaviour
                 _alive = false;
                 _animator.Play("Die");
             }
+            _damageTimeout = 0.1f;
         }
     }
 
