@@ -8,20 +8,20 @@ public class coin : MonoBehaviour
     [SerializeField] private int coinValue = 10;
     [SerializeField] private TextMeshProUGUI currencyText;
     [SerializeField] private GameObject[] children;
-    [SerializeField] private AudioClip coinSound;
+    // [SerializeField] private AudioClip coinSound;
     [SerializeField] private string loadCurrency;
 
     private AudioSource audioSource;
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
+        // audioSource = GetComponent<AudioSource>();
+        // if (audioSource == null)
+        // {
+        //     audioSource = gameObject.AddComponent<AudioSource>();
+        // }
 
-        audioSource.playOnAwake = false;
+        // audioSource.playOnAwake = false;
     }
 
     private void Update()
@@ -37,7 +37,7 @@ public class coin : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //PlayCoinSound();
-            audioSource.PlayOneShot(coinSound);
+            // audioSource.PlayOneShot(coinSound);
             UpdateCurrency();
             gameObject.SetActive(false);
         }
@@ -53,10 +53,10 @@ public class coin : MonoBehaviour
 
     private void PlayCoinSound()
     {
-        if (coinSound != null)
-        {
-            audioSource.PlayOneShot(coinSound); // Play the coin sound effect
-        }
+        // if (coinSound != null)
+        // {
+        //     audioSource.PlayOneShot(coinSound); // Play the coin sound effect
+        // }
     }
 
     //private void OnDisable()

@@ -658,7 +658,7 @@ using UnityEngine.InputSystem;
 
             if (other.gameObject.CompareTag("Coin"))
             {
-                audioSource.PlayOneShot(coinSound);
+                AudioSource.PlayClipAtPoint(coinSound, transform.TransformPoint(_controller.center), AudioVolume);
             }
 
             if (_damageTimeout <= 0)
