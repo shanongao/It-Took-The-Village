@@ -716,18 +716,21 @@ using UnityEngine.InputSystem;
             {
                 AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
                 GameObject hammer = HammerHolder.transform.GetChild(0).gameObject;
+                hammer.GetComponent<BoxCollider>().enabled = true;
                 _attacking = hammer.GetComponent<WeaponAttackPower>().attackPower;
             }
             else if (_equippedWeapon == 1)
             {
                 AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
                 GameObject sword = SwordHolder.transform.GetChild(0).gameObject;
+                sword.GetComponent<BoxCollider>().enabled = true;
                 _attacking = sword.GetComponent<WeaponAttackPower>().attackPower;
             }
             else if (_equippedWeapon == 2)
             {
                 AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
                 GameObject axe = AxeHolder.transform.GetChild(0).gameObject;
+                axe.GetComponent<BoxCollider>().enabled = true;
                 _attacking = axe.GetComponent<WeaponAttackPower>().attackPower;
             }
             
@@ -738,6 +741,7 @@ using UnityEngine.InputSystem;
         {
             AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
             GameObject axe = AxeHolder.transform.GetChild(0).gameObject;
+            axe.GetComponent<BoxCollider>().enabled = true;
             _attacking = axe.GetComponent<WeaponAttackPower>().attackPower;
             Debug.Log(_attacking);
         }
@@ -746,6 +750,7 @@ using UnityEngine.InputSystem;
         {
             AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
             GameObject axe = AxeHolder.transform.GetChild(0).gameObject;
+            axe.GetComponent<BoxCollider>().enabled = true;
             BoxCollider collider = axe.GetComponent<BoxCollider>();
             collider.size = new Vector3(collider.size.x, 3f, collider.size.z*1.5f);
             _attacking = Mathf.RoundToInt(axe.GetComponent<WeaponAttackPower>().attackPower * 1.2f);
@@ -756,6 +761,7 @@ using UnityEngine.InputSystem;
         {
             AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
             GameObject hammer = HammerHolder.transform.GetChild(0).gameObject;
+            hammer.GetComponent<BoxCollider>().enabled = true;
             _attacking = hammer.GetComponent<WeaponAttackPower>().attackPower;
             Debug.Log(_attacking);
         }
@@ -764,6 +770,7 @@ using UnityEngine.InputSystem;
         {
             AudioSource.PlayClipAtPoint(SwordSlashSound, transform.TransformPoint(_controller.center), AudioVolume);
             GameObject hammer = HammerHolder.transform.GetChild(0).gameObject;
+            hammer.GetComponent<BoxCollider>().enabled = true;
             BoxCollider collider = hammer.GetComponent<BoxCollider>();
             collider.size = new Vector3(collider.size.x, collider.size.y*2f, collider.size.z*2f);
             _attacking = Mathf.RoundToInt(hammer.GetComponent<WeaponAttackPower>().attackPower * 1.5f);
@@ -780,12 +787,19 @@ using UnityEngine.InputSystem;
                 GameObject hammer = HammerHolder.transform.GetChild(0).gameObject;
                 BoxCollider collider = hammer.GetComponent<BoxCollider>();
                 collider.size = new Vector3(collider.size.x, 0.37f, 0.36f);
+                hammer.GetComponent<BoxCollider>().enabled = false;
+            }
+            else if (_equippedWeapon == 1)
+            {
+                GameObject sword = SwordHolder.transform.GetChild(0).gameObject;
+                sword.GetComponent<BoxCollider>().enabled = false;
             }
             else if (_equippedWeapon == 2)
             {
                 GameObject axe = AxeHolder.transform.GetChild(0).gameObject;
                 BoxCollider collider = axe.GetComponent<BoxCollider>();
                 collider.size = new Vector3(collider.size.x, 0.5f, collider.size.z);
+                axe.GetComponent<BoxCollider>().enabled = false;
             }
         }
 
