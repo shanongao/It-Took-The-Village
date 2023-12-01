@@ -488,7 +488,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 10
-  detectionDistance: 7
+  viewRadius: 7
+  viewAngle: 90
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 256
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 513
+  detectionDistance: 10
   attackDistance: 2.5
   damage: 5
   _nav: {fileID: 0}
