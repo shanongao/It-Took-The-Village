@@ -7,6 +7,11 @@ using UnityEngine.UI;
 public class EnemySkeletonController : MonoBehaviour
 {
     public int HP = 50;
+    public float viewRadius;
+    [Range(0, 360)]
+    public float viewAngle;
+    public LayerMask targetMask;
+    public LayerMask obstacleMask;
     public GameObject HealthBar;
     public float detectionDistance = 6f;
     public float attackDistance = 2f;
@@ -30,6 +35,7 @@ public class EnemySkeletonController : MonoBehaviour
     private float _distanceToPlayer;
     private Slider _healthBarSlider;
     private float _damageTimeout = 0f;
+    private bool _engaged = false;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +56,7 @@ public class EnemySkeletonController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         _damageTimeout -= Time.deltaTime;
         _distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
@@ -64,24 +70,35 @@ public class EnemySkeletonController : MonoBehaviour
 
     void DetectPlayer()
     {
-        if (_distanceToPlayer <= attackDistance)
+        if (SeesPlayer())
         {
-            HealthBar.SetActive(true);
-            AttackPlayer();
+            _engaged = true;
+            if (_distanceToPlayer <= attackDistance)
+            {
+                AttackPlayer();
+            }
+            else
+            {
+                ChasePlayer();
+            }
         }
-        else if (_distanceToPlayer <= detectionDistance)
+        else if (_engaged)
         {
-            HealthBar.SetActive(true);
-            ChasePlayer();
-        }
-        else if (_distanceToPlayer > detectionDistance*1.5f)
-        {
-            HealthBar.SetActive(false);
+            if (_distanceToPlayer > attackDistance && _distanceToPlayer <= detectionDistance)
+            {
+                ChasePlayer();
+            }
+            else if (_distanceToPlayer > detectionDistance)
+            {
+                SetIdle();
+                _engaged = false;
+            }
         }
     }
 
     void ChasePlayer()
     {
+        HealthBar.SetActive(true);
         _animator.SetBool("chasePlayer", true);
         _animator.SetBool("attackPlayer", false);
         _nav.isStopped = false;
@@ -90,12 +107,21 @@ public class EnemySkeletonController : MonoBehaviour
 
     void AttackPlayer()
     {
+        HealthBar.SetActive(true);
         _animator.SetBool("chasePlayer", false);
         _animator.SetBool("attackPlayer", true);
         _nav.isStopped = true;
         _nav.velocity = Vector3.zero;
         transform.LookAt(_player.transform);
         transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,0);
+    }
+
+    void SetIdle()
+    {
+        HealthBar.SetActive(false);
+        _animator.SetBool("chasePlayer", false);
+        _animator.SetBool("attackPlayer", false);
+        _nav.isStopped = true;
     }
 
     void MeleeDamage()
@@ -119,6 +145,8 @@ public class EnemySkeletonController : MonoBehaviour
                     AudioSource.PlayClipAtPoint(OnHitSound, transform.position, AudioVolume);
                     // take damage
                     HP -= _playerController._attacking;
+                    // turn to look at player
+                    transform.LookAt(_player.transform);
                     // stagger enemey if enough damage
                     if (_playerController._attacking >= 10)
                     {
@@ -168,5 +196,25 @@ public class EnemySkeletonController : MonoBehaviour
         Vector3 healthBarPosition = new Vector3(position.x, position.y+300, position.z);
         HealthBar.transform.position = Vector3.Lerp(HealthBar.transform.position, healthBarPosition, lerp);
         _healthBarSlider.value = HP;
+    }
+
+    bool SeesPlayer()
+    {
+        Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
+        for (int i = 0; i < targetsInViewRadius.Length; i++)
+        {
+            Transform target = targetsInViewRadius[i].transform;
+            Vector3 dirToTarget = (target.position - transform.position).normalized;
+            if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle/2)
+            {
+                float dstToTarget = Vector3.Distance(transform.position, target.position);
+                if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

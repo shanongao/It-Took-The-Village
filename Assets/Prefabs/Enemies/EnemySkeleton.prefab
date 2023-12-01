@@ -58,7 +58,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88875587c44c4ceab977fd6baf379af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxDamage: 10
   Damage: 10
 --- !u!1 &1975428699739996199
 GameObject:
@@ -3252,8 +3251,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 30
+  viewRadius: 7
+  viewAngle: 90
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 256
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 513
   HealthBar: {fileID: 6427024175484412724}
-  detectionDistance: 8
+  detectionDistance: 10
   attackDistance: 2.8
   damage: 10
   _nav: {fileID: 0}
