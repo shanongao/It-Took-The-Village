@@ -86,6 +86,7 @@ using UnityEngine.InputSystem;
         [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
         public GameObject CinemachineCameraTarget;
         public GameObject DefaultCamera;
+        public GameObject IndoorCamera;
 
         [Tooltip("How far in degrees can you move the camera up")]
         public float TopClamp = 70.0f;
@@ -154,6 +155,10 @@ using UnityEngine.InputSystem;
 
         private const float _threshold = 0.001f;
 
+        private BGMManager BGM;
+        private bool _inDungeon = false;
+        private bool _bossFight = false;
+
         private void Awake()
         {
             // get a reference to our main camera
@@ -197,6 +202,7 @@ using UnityEngine.InputSystem;
             _shieldCollider = ShieldHolder.transform.GetChild(0).gameObject.GetComponent<BoxCollider>();
             _inventory = Inventory.GetComponent<equipWeapon>();
             InitWeapons();
+            BGM = GameObject.FindWithTag("Music").GetComponent<BGMManager>();
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
             _playerInput = GetComponent<PlayerInput>();
@@ -282,10 +288,10 @@ using UnityEngine.InputSystem;
             // Cinemachine will follow this target
             if (_snap)
             {
-                // CinemachineCameraTarget.transform.position = DefaultCamera.transform.position;
+                CinemachineCameraTarget.transform.position = DefaultCamera.transform.position;
                 CinemachineCameraTarget.transform.rotation = DefaultCamera.transform.rotation;
-                _cinemachineTargetPitch = CinemachineCameraTarget.transform.rotation.x;
-                _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.y;
+                _cinemachineTargetPitch = transform.rotation.eulerAngles.x;
+                _cinemachineTargetYaw = transform.rotation.eulerAngles.y;
             }
             else
             {
@@ -293,8 +299,6 @@ using UnityEngine.InputSystem;
                 _cinemachineTargetYaw, 0.0f);
             }
             
-            // CinemachineCameraTarget.transform.RotateAround(transform.position, Vector3.up, _look.x);
-
             _lookPrev = _look;
         }
 
@@ -338,7 +342,8 @@ using UnityEngine.InputSystem;
 		{	
             if (context.performed)
             {
-                // _snap = true;
+                _snap = true;
+                _look = Vector2.zero;
             }
 		}
 
@@ -676,6 +681,48 @@ using UnityEngine.InputSystem;
                 TakeDamage(damage);
                 _damageTimeout = 0.1f;
             }
+
+            if (other.gameObject.CompareTag("Dungeon"))
+            {
+                if (!_inDungeon)
+                {
+                    BGM.PlayDungeon();
+                    _inDungeon = true;
+                    CinemachineCameraTarget.transform.position = IndoorCamera.transform.position;
+                    _relativeCameraPosition = transform.InverseTransformPoint(CinemachineCameraTarget.transform.position);
+                }
+            }
+
+            if (other.gameObject.CompareTag("BossRoom"))
+            {
+                if (_inDungeon)
+                {
+                    BGM.PlayBoss();
+                    _bossFight = true;
+                }
+            }
+        }
+
+        void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.CompareTag("Dungeon"))
+            {
+                if (_inDungeon)
+                {
+                    BGM.PlayOverWorld();
+                    _inDungeon = false;
+                    CinemachineCameraTarget.transform.position = DefaultCamera.transform.position;
+                    _relativeCameraPosition = transform.InverseTransformPoint(CinemachineCameraTarget.transform.position);
+                }
+            }
+            else if (other.gameObject.CompareTag("BossRoom"))
+            {
+                if (_inDungeon)
+                {
+                    BGM.PlayDungeon();
+                }
+                _bossFight = false;
+            }
         }
 
         public void TakeDamage(int damage)
@@ -817,5 +864,10 @@ using UnityEngine.InputSystem;
             {
                 AudioSource.PlayClipAtPoint(ShieldingAudioClip, transform.TransformPoint(_controller.center), AudioVolume);
             }
+        }
+
+        public bool InBossFight()
+        {
+            return _bossFight;
         }
     }

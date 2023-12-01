@@ -31,8 +31,6 @@ public class BossEnemyController : MonoBehaviour
     private NewPlayerController _playerController;
     private Animator _animator;
     private bool _alive = true;
-    private BGMManager BGM;
-    private bool _BGMStarted = false;
 
     void Start()
     {
@@ -46,7 +44,6 @@ public class BossEnemyController : MonoBehaviour
         _healthBarSlider.maxValue = HP;
         _healthBarSlider.value = HP;
         HealthBar.SetActive(false);
-        BGM = GameObject.FindWithTag("Music").GetComponent<BGMManager>();
     }
 
     void Update()
@@ -62,13 +59,8 @@ public class BossEnemyController : MonoBehaviour
     void DetectPlayer()
     {
         float distance = Vector3.Distance(_player.transform.position, transform.position);
-        if (distance <= detectionDistance)
+        if (distance <= detectionDistance && _playerController.InBossFight())
         {
-            if (!_BGMStarted)
-            {
-                BGM.PlayBoss();
-                _BGMStarted = true;
-            }
             HealthBar.SetActive(true);
             BossUI.SetActive(true);
             TextMeshProUGUI tmp = BossUI.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
@@ -77,7 +69,7 @@ public class BossEnemyController : MonoBehaviour
             transform.eulerAngles = new Vector3(0,transform.eulerAngles.y,0);
             ShootAtPlayer();
         }
-        else if (distance > detectionDistance*1.5)
+        else
         {
             HealthBar.SetActive(false);
             BossUI.SetActive(false);
@@ -145,7 +137,6 @@ public class BossEnemyController : MonoBehaviour
     void OnDeath()
     {
         AudioSource.PlayClipAtPoint(DeathSound, transform.position, AudioVolume);
-        BGM.Stop();
     }
 
     void SetHeath()

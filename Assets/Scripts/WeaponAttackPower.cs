@@ -12,12 +12,11 @@ public class WeaponAttackPower : MonoBehaviour
     {
         if (attackPower < maxAttackPower)
         {
-            attackPower += upgradeIncrement;
+            attackPower = Mathf.RoundToInt(attackPower * 1.8f);
             if (attackPower > maxAttackPower)
             {
                 attackPower = maxAttackPower;
             }
-            Debug.Log("Upgrading Weapon");
             return true;
         }
         else

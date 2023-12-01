@@ -25,6 +25,7 @@ public class ShopHandler : MonoBehaviour
     private int cost = 0;
 
     private bool canPurchase;
+    private TextMeshProUGUI promtTextString;
 
     private void Awake()
     {
@@ -35,8 +36,8 @@ public class ShopHandler : MonoBehaviour
     {
         prompt.SetActive(false);
         dialogCanvas.SetActive(false);
-        TextMeshProUGUI tmp = prompt.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
-        tmp.SetText(promptText);
+        promtTextString = prompt.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+        promtTextString.SetText(promptText);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,6 +55,7 @@ public class ShopHandler : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInRange = false;
+            promtTextString.SetText(promptText);
         }
     }
 
@@ -81,15 +83,24 @@ public class ShopHandler : MonoBehaviour
         {
             if (currWeapon)
             {
-                currWeapon.GetComponent<WeaponAttackPower>().UpgradeWeapon();
+                if (currWeapon.GetComponent<WeaponAttackPower>().UpgradeWeapon())
+                {
+                    promtTextString.SetText("Your weapon was upgraded! Press E again to upgrade more weapons.");
+                    string currentCurrency = currencyText.text;
+                    int.TryParse(currentCurrency.Substring(1), out int originalNumber);
+                    int newCurr = originalNumber - cost;
+                    currencyText.text = $"${newCurr}";
+                }
+                else
+                {
+                    // cannot upgrade any more
+                    promtTextString.SetText("This weapon cannot be upgraded further. Press E to upgrade another weapon.");
+                }
+
                 CloseDialog();
                 ResumePlayerMovement();
                 inDialog = false;
-
-                string currentCurrency = currencyText.text;
-                int.TryParse(currentCurrency.Substring(1), out int originalNumber);
-                int newCurr = originalNumber - cost;
-                currencyText.text = $"${newCurr}";
+                
             }
         }
     }

@@ -80,7 +80,7 @@ public class EnemySlimeController : MonoBehaviour
                 HealthBar.SetActive(true);
                 ChasePlayer();
             }
-            else
+            else if (_distanceToPlayer > detectionDistance*1.5f)
             {
                 HealthBar.SetActive(false);
             }

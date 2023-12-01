@@ -19,6 +19,9 @@ TagManager:
   - DialogCanvas
   - Coin
   - Music
+  - Elevator
+  - Dungeon
+  - BossRoom
   layers:
   - Default
   - TransparentFX

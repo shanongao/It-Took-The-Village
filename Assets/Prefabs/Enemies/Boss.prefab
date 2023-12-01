@@ -315,7 +315,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 5350339490482465564}
   spawnPoint: {fileID: 3941109108837359885}
   bulletSpeed: 1000
-  detectionDistance: 5
+  detectionDistance: 10
   HP: 50
   HealthBar: {fileID: 93076318167904986}
   BossUI: {fileID: 6399547280890534830}
@@ -1861,7 +1861,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88875587c44c4ceab977fd6baf379af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxDamage: 15
   Damage: 5
 --- !u!1001 &49434355
 PrefabInstance:
