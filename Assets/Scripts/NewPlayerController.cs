@@ -288,8 +288,16 @@ using UnityEngine.InputSystem;
             // Cinemachine will follow this target
             if (_snap)
             {
-                CinemachineCameraTarget.transform.position = DefaultCamera.transform.position;
-                CinemachineCameraTarget.transform.rotation = DefaultCamera.transform.rotation;
+                if (_inDungeon)
+                {
+                    CinemachineCameraTarget.transform.position = IndoorCamera.transform.position;
+                    CinemachineCameraTarget.transform.rotation = IndoorCamera.transform.rotation;
+                }
+                else
+                {
+                    CinemachineCameraTarget.transform.position = DefaultCamera.transform.position;
+                    CinemachineCameraTarget.transform.rotation = DefaultCamera.transform.rotation;
+                }
                 _cinemachineTargetPitch = transform.rotation.eulerAngles.x;
                 _cinemachineTargetYaw = transform.rotation.eulerAngles.y;
             }
