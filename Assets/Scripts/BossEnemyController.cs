@@ -32,6 +32,7 @@ public class BossEnemyController : MonoBehaviour
     private Animator _animator;
     private bool _alive = true;
     private BGMManager BGM;
+    private bool _BGMStarted = false;
 
     void Start()
     {
@@ -63,7 +64,11 @@ public class BossEnemyController : MonoBehaviour
         float distance = Vector3.Distance(_player.transform.position, transform.position);
         if (distance <= detectionDistance)
         {
-            BGM.PlayBoss();
+            if (!_BGMStarted)
+            {
+                BGM.PlayBoss();
+                _BGMStarted = true;
+            }
             HealthBar.SetActive(true);
             BossUI.SetActive(true);
             TextMeshProUGUI tmp = BossUI.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
@@ -74,7 +79,6 @@ public class BossEnemyController : MonoBehaviour
         }
         else if (distance > detectionDistance*1.5)
         {
-            BGM.PlayDungeon();
             HealthBar.SetActive(false);
             BossUI.SetActive(false);
         }
@@ -141,6 +145,7 @@ public class BossEnemyController : MonoBehaviour
     void OnDeath()
     {
         AudioSource.PlayClipAtPoint(DeathSound, transform.position, AudioVolume);
+        BGM.Stop();
     }
 
     void SetHeath()

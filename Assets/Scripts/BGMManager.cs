@@ -49,9 +49,16 @@ public class BGMManager : MonoBehaviour
 
     public void PlayBoss()
     {
-        OverWorldMusic.Play();
+        OverWorldMusic.Stop();
         DungeonMusic.Stop();
         BossMusic.Play();
         BossMusic.loop = true;
+    }
+
+    public void Stop()
+    {
+        OverWorldMusic.Stop();
+        DungeonMusic.Stop();
+        BossMusic.Stop();
     }
 }
