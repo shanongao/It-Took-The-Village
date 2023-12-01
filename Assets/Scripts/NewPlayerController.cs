@@ -255,7 +255,6 @@ using UnityEngine.InputSystem;
 
         private void CameraRotation()
         {
-            Debug.Log(_look);
             if (Vector2.Distance(_look, _lookPrev) > 0.01)
             {
                 _snap = false;

@@ -11,8 +11,8 @@ public class BGMManager : MonoBehaviour
 
     void Awake()
     {
+        OverWorldMusic.loop = true;
         OverWorldMusic.Play();
-
     }
 
     // Start is called before the first frame update
