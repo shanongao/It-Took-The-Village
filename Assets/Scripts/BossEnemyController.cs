@@ -98,7 +98,7 @@ public class BossEnemyController : MonoBehaviour
         {
             float angle = i * angleStep;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
-            Vector3 adjustedSpawnPosition = spawnPoint.transform.position + new Vector3(0, 0.5f, 0);
+            Vector3 adjustedSpawnPosition = spawnPoint.transform.position + new Vector3(0, 0.9f, 0);
             GameObject rocketObj = Instantiate(enemyBullet, adjustedSpawnPosition, rotation) as GameObject;
             Vector3 forwardDirection = rotation * Vector3.forward;
             rocketObj.transform.Rotate(Vector3.right * 90, Space.Self);
