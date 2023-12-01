@@ -143,6 +143,7 @@ using UnityEngine.InputSystem;
 
         private Vector2 _moveVector;
         private Vector2 _look;
+        private Vector2 _lookPrev;
         private bool _sprint;
         private bool _jump;
         private bool _snap = false;
@@ -228,17 +229,7 @@ using UnityEngine.InputSystem;
 
         private void LateUpdate()
         {
-            if (_snap)
-            {
-                CinemachineCameraTarget.transform.position = DefaultCamera.transform.position;
-                CinemachineCameraTarget.transform.rotation = DefaultCamera.transform.rotation;
-                _snap = false;
-            }
-            else
-            {
-                CameraRotation();
-            }
-            
+            CameraRotation();
             _damageTimeout -= Time.deltaTime;
         }
 
@@ -264,6 +255,11 @@ using UnityEngine.InputSystem;
 
         private void CameraRotation()
         {
+            Debug.Log(_look);
+            if (Vector2.Distance(_look, _lookPrev) > 0.01)
+            {
+                _snap = false;
+            }
             // do not move the camera if game is paused
             if (Time.timeScale == 0)
             {
@@ -285,9 +281,22 @@ using UnityEngine.InputSystem;
             _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
             // Cinemachine will follow this target
-            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
+            if (_snap)
+            {
+                // CinemachineCameraTarget.transform.position = DefaultCamera.transform.position;
+                CinemachineCameraTarget.transform.rotation = DefaultCamera.transform.rotation;
+                _cinemachineTargetPitch = CinemachineCameraTarget.transform.rotation.x;
+                _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.y;
+            }
+            else
+            {
+                CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
                 _cinemachineTargetYaw, 0.0f);
+            }
+            
             // CinemachineCameraTarget.transform.RotateAround(transform.position, Vector3.up, _look.x);
+
+            _lookPrev = _look;
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -299,6 +308,7 @@ using UnityEngine.InputSystem;
             }
             if (_moveVector.magnitude > 0)
             {
+                _snap = false;
                 _animator.SetBool("isWalking", true);
             }
             else
@@ -329,7 +339,7 @@ using UnityEngine.InputSystem;
 		{	
             if (context.performed)
             {
-                _snap = true;
+                // _snap = true;
             }
 		}
 
@@ -521,6 +531,7 @@ using UnityEngine.InputSystem;
             temp.transform.position = transform.position;
             temp.transform.rotation = CinemachineCameraTarget.transform.rotation;
             CinemachineCameraTarget.transform.position = temp.transform.TransformPoint(_relativeCameraPosition);
+            Destroy(temp);
         }
 
         private void Action()

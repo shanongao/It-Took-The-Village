@@ -18,6 +18,7 @@ TagManager:
   - ButtonPrompt
   - DialogCanvas
   - Coin
+  - Music
   layers:
   - Default
   - TransparentFX
