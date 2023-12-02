@@ -665,29 +665,14 @@ using UnityEngine.InputSystem;
 
         void OnTriggerEnter(Collider other)
         {
-            int damage = 0;
             if (other.gameObject.CompareTag("EnemyProjectile"))
             {
-                EnemyAttackPower attack = other.gameObject.GetComponent<EnemyAttackPower>();
-                damage = attack.Damage;
                 Destroy(other.gameObject);
             }
-
-            // if (other.gameObject.CompareTag("EnemyMelee"))
-            // {
-            //     EnemyAttackPower attack = other.gameObject.GetComponent<EnemyAttackPower>();
-            //     damage = attack.Damage;
-            // }
 
             if (other.gameObject.CompareTag("Coin"))
             {
                 AudioSource.PlayClipAtPoint(coinSound, transform.TransformPoint(_controller.center), AudioVolume);
-            }
-
-            if (_damageTimeout <= 0 && damage > 0)
-            {
-                TakeDamage(damage);
-                _damageTimeout = 0.1f;
             }
 
             if (other.gameObject.CompareTag("Dungeon"))
@@ -735,20 +720,24 @@ using UnityEngine.InputSystem;
 
         public void TakeDamage(int damage)
         {
-            AudioSource.PlayClipAtPoint(DamageSound, transform.TransformPoint(_controller.center), AudioVolume);
+            if (_damageTimeout <= 0)
+            {
+                AudioSource.PlayClipAtPoint(DamageSound, transform.TransformPoint(_controller.center), AudioVolume);
 
-            if (currentHealth > 0)
-            {
-                currentHealth -= damage;
+                if (currentHealth > 0)
+                {
+                    currentHealth -= damage;
+                }
+                else
+                {
+                    currentHealth = 0;
+                }
+                // if (damage >= 5)
+                // {
+                //     _animator.Play("Stagger");
+                // }
+                _damageTimeout = 0.5f;
             }
-            else
-            {
-                currentHealth = 0;
-            }
-            // if (damage >= 5)
-            // {
-            //     _animator.Play("Stagger");
-            // }
         }
 
         void SetHP()

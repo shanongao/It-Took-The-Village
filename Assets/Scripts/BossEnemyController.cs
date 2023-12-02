@@ -46,7 +46,7 @@ public class BossEnemyController : MonoBehaviour
         HealthBar.SetActive(false);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         _damageTimeout -= Time.deltaTime;
         if (_alive)
@@ -119,7 +119,7 @@ public class BossEnemyController : MonoBehaviour
                 _alive = false;
                 _animator.Play("Die");
             }
-            _damageTimeout = 0.1f;
+            _damageTimeout = 0.2f;
         }
     }
 

@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 33181463367082262}
   - component: {fileID: 23302400774300338}
   - component: {fileID: 709239103024651727}
+  - component: {fileID: 3862954592669313120}
+  - component: {fileID: 8095495712773447083}
   m_Layer: 0
   m_Name: Rocket05_Red
-  m_TagString: Untagged
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,3 +102,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3862954592669313120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606885508987902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88875587c44c4ceab977fd6baf379af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 10
+--- !u!136 &8095495712773447083
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606885508987902}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.2793049
+  m_Height: 7.4863305
+  m_Direction: 1
+  m_Center: {x: -0.00000023841858, y: 0.4751222, z: 0.0000075101852}

@@ -36,7 +36,6 @@ public class EnemySlimeController : MonoBehaviour
     private float _distanceToPlayer;
     private Slider _healthBarSlider;
     private float _damageTimeout = 0f;
-    private float _timeout = 0f;
     private bool _engaged = false;
 
     // Start is called before the first frame update
@@ -61,7 +60,6 @@ public class EnemySlimeController : MonoBehaviour
     void FixedUpdate()
     {
         _damageTimeout -= Time.deltaTime;
-        _timeout -= Time.deltaTime;
         _distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
 
         if (_alive)
@@ -73,36 +71,30 @@ public class EnemySlimeController : MonoBehaviour
 
     void DetectPlayer()
     {
-        if (_timeout <= 0)
+        if (SeesPlayer())
         {
-            if (SeesPlayer())
+            _engaged = true;
+            if (_distanceToPlayer <= attackDistance)
             {
-                _engaged = true;
-                if (_distanceToPlayer <= attackDistance)
-                {
-                    AttackPlayer();
-                }
-                else
-                {
-                    ChasePlayer();
-                }
+                AttackPlayer();
             }
-            else if (_engaged)
+            else
             {
-                if (_distanceToPlayer > attackDistance && _distanceToPlayer <= detectionDistance)
-                {
-                    ChasePlayer();
-                }
-                else if (_distanceToPlayer > detectionDistance)
-                {
-                    SetIdle();
-                    _engaged = false;
-                }
+                ChasePlayer();
             }
-
-            _timeout = 0.2f;
         }
-        
+        else if (_engaged)
+        {
+            if (_distanceToPlayer > attackDistance && _distanceToPlayer <= detectionDistance)
+            {
+                ChasePlayer();
+            }
+            else if (_distanceToPlayer > detectionDistance)
+            {
+                SetIdle();
+                _engaged = false;
+            }
+        }
     }
 
     void ChasePlayer()
@@ -165,7 +157,7 @@ public class EnemySlimeController : MonoBehaviour
                 _alive = false;
                 _animator.Play("Die");
             }
-            _damageTimeout = 0.1f;
+            _damageTimeout = 0.2f;
         }
     }
 
@@ -188,7 +180,8 @@ public class EnemySlimeController : MonoBehaviour
     {
         Vector3 position = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 healthBarPosition = new Vector3(position.x, position.y+HealthBarHeight, position.z);
-        HealthBar.transform.position = Vector3.Lerp(HealthBar.transform.position, healthBarPosition, lerp);
+        // HealthBar.transform.position = Vector3.Lerp(HealthBar.transform.position, healthBarPosition, lerp);
+        HealthBar.transform.position = healthBarPosition;
         _healthBarSlider.value = HP;
     }
 

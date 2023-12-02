@@ -497,7 +497,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 513
   detectionDistance: 10
-  attackDistance: 2.5
+  attackDistance: 2
   damage: 5
   _nav: {fileID: 0}
   meleeCollider: {fileID: 7947418946801352291}

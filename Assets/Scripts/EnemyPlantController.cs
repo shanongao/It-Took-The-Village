@@ -46,7 +46,7 @@ public class EnemyPlantController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         _damageTimeout -= Time.deltaTime;
         if (_alive)
@@ -75,7 +75,7 @@ public class EnemyPlantController : MonoBehaviour
                 _alive = false;
                 _animator.Play("Die");
             }
-            _damageTimeout = 0.1f;
+            _damageTimeout = 0.2f;
         }
     }
 
@@ -129,7 +129,8 @@ public class EnemyPlantController : MonoBehaviour
     {
         Vector3 position = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 healthBarPosition = new Vector3(position.x, position.y+HealthBarHeight, position.z);
-        HealthBar.transform.position = Vector3.Lerp(HealthBar.transform.position, healthBarPosition, lerp);
+        // HealthBar.transform.position = Vector3.Lerp(HealthBar.transform.position, healthBarPosition, lerp);
+        HealthBar.transform.position = healthBarPosition;
         _healthBarSlider.value = HP;
     }
 }

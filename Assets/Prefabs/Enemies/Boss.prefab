@@ -311,16 +311,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 5
-  sceneName: 
-  enemyBullet: {fileID: 5350339490482465564}
+  sceneName: Act_2_Outro
+  enemyBullet: {fileID: 1606885508987902, guid: 35bc94f19715cc54cae7950933debd3c,
+    type: 3}
   spawnPoint: {fileID: 3941109108837359885}
-  bulletSpeed: 1000
+  bulletSpeed: 900
   detectionDistance: 10
   HP: 50
   HealthBar: {fileID: 93076318167904986}
   BossUI: {fileID: 6399547280890534830}
   BossName: Virus-720WX
-  AudioVolume: 0.75
+  AudioVolume: 1
   BulletSound: {fileID: 8300000, guid: e11a5a019377fbd4c81caa0adcb4c236, type: 3}
   OnHitSound: {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
   DeathSound: {fileID: 8300000, guid: 566d2ea6240b489479a6e9fd608c2621, type: 3}
@@ -1754,7 +1755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7309346321281973642
 Transform:
   m_ObjectHideFlags: 0
@@ -1828,7 +1829,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5350339490482465564}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

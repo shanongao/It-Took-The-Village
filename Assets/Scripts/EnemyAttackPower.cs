@@ -41,10 +41,10 @@ public class EnemyAttackPower : MonoBehaviour
             
             else if (other.gameObject.CompareTag("Player"))
             {
-                _playerController.TakeDamage(Mathf.RoundToInt(Damage));
+                _playerController.TakeDamage(Damage);
             }
 
-            _damageTimeout = 0.1f;
+            _damageTimeout = 0.2f;
         }
     }
 }
