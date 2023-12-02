@@ -102,6 +102,7 @@ using UnityEngine.InputSystem;
 
         [Header("Items")]
         public GameObject doorKey;
+        public GameObject mazeKey;
         
         [Header("UI")]
         public TextMeshProUGUI countText;

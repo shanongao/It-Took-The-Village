@@ -22,6 +22,7 @@ TagManager:
   - Elevator
   - Dungeon
   - BossRoom
+  - Room1Enemy
   layers:
   - Default
   - TransparentFX
