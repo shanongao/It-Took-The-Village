@@ -2921,7 +2921,7 @@ MonoBehaviour:
   AxeHolder: {fileID: 8561011290863550838}
   HammerHolder: {fileID: 8561011291152531444}
   ShieldHolder: {fileID: 8561011291540735437}
-  FootstepAudioVolume: 0.5
+  FootstepAudioVolume: 0.9
   LandingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}
   FootstepAudioClips:
   - {fileID: 8300000, guid: 72f526a6a9890f643a88e85a61c86c8a, type: 3}

@@ -25261,7 +25261,7 @@ MonoBehaviour:
   OverWorldMusic: {fileID: 625000638}
   DungeonMusic: {fileID: 625000637}
   BossMusic: {fileID: 625000640}
-  BGMVolume: 0.494
+  BGMVolume: 0.4
 --- !u!82 &625000640
 AudioSource:
   m_ObjectHideFlags: 0
