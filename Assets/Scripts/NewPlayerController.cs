@@ -751,6 +751,11 @@ using UnityEngine.InputSystem;
             countText.text = "HP: " + currentHealth.ToString();
         }
 
+        public void IncreaseHealth(int val)
+        {
+            currentHealth += val;
+        }
+
         void ShieldUp()
         {
             _shieldCollider.enabled = true;
