@@ -35752,6 +35752,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: VillagerWalking
       objectReference: {fileID: 0}
+    - target: {fileID: 7825986570330810861, guid: c7a4fa2b9514143668a65904679c0f61,
+        type: 3}
+      propertyPath: dialogueText.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825986570330810861, guid: c7a4fa2b9514143668a65904679c0f61,
+        type: 3}
+      propertyPath: dialogueText.Array.data[0]
+      value: Get out of my way, fool.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a4fa2b9514143668a65904679c0f61, type: 3}
 --- !u!1 &1448017864
@@ -52799,6 +52809,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825986570330810861, guid: c7a4fa2b9514143668a65904679c0f61,
+        type: 3}
+      propertyPath: dialogueText.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825986570330810861, guid: c7a4fa2b9514143668a65904679c0f61,
+        type: 3}
+      propertyPath: dialogueText.Array.data[0]
+      value: There's a great evil out there... But don't worry, we are ready for
+        anything!
       objectReference: {fileID: 0}
     - target: {fileID: 7973795697695342386, guid: c7a4fa2b9514143668a65904679c0f61,
         type: 3}
