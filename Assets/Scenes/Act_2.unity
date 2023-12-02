@@ -80207,7 +80207,7 @@ MonoBehaviour:
   chestClosed: {fileID: 2028417929}
   chestOpen: {fileID: 110327470}
   prompt: {fileID: 243386603}
-  promptText: 
+  promptText: Press E to open
 --- !u!114 &2028417932
 MonoBehaviour:
   m_ObjectHideFlags: 0
