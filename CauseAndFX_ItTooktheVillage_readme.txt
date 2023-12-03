@@ -49,14 +49,33 @@ Teammate Contributions:
 
 Shanon Gao: 
 
-Boss room prefab, Boss prototype
 \Assets\Scripts\BossEnemyController.cs
 \Assets\Scripts\ElevatorController.cs
-\Assets\Scripts\EnemyAttackPower.cs
+\Assets\Scripts\ChestInteractionMaze.cs
+\Assets\Scripts\Door1.cs
+\Assets\Scripts\DoorMaze.cs
+\Assets\Scripts\ElevatorController.cs
+\Assets\Animations\Elevator.anim
+\Assets\Animations\Elevator.controller
+\Assets\Animations\Elevator2ndFloor.anim
+\Assets\Animations\Elevator2ndFloor.controller
 \Assets\Animations\BossAnimator
+\Assets\Prefabs\Boss Room 3rd Floor Variant.prefab
+\Assets\Prefabs\Boss Room Maze.prefab
+\Assets\Prefabs\Elevator.prefab
+\Assets\Prefabs\Elevator Second Floor.prefab
+\Assets\Prefabs\Rocket05_Red.prefab
+\Assets\Prefabs\Boss Room 3rd Floor Variant.prefab
 
-Added after Alpha:
-Redesigned the Boss room into a multi-floor dungeon.
+Worked on/designed:
+- Redesigned the Boss room into a multi-floor dungeon.
+- Elevator logic that is one way and only activates if player is on top of it and designed elevator shaft
+- Boss dungeon floor one door logic to unlock after room one enemies are all defeated
+- Boss dungeon floor two door logic to unlock after chest is opened on floor two.
+- Created elevator animation
+- Added maze key in chest on floor two of boss dungeon.
+- Designed the maze prefab. Fixed flickering of maze wall texture
+- Wrote logic for boss rocket shooting animation
 
 Parth Arora:
 
