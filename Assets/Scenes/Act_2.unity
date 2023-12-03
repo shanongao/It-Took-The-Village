@@ -87646,6 +87646,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewPlayerBody
       objectReference: {fileID: 0}
+    - target: {fileID: 8963789029054733347, guid: 4158b0e92ba7b4aceae4a786a994540a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9151645429477827170, guid: 4158b0e92ba7b4aceae4a786a994540a,
         type: 3}
       propertyPath: m_RootOrder
