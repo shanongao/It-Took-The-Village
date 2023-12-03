@@ -754,6 +754,10 @@ using UnityEngine.InputSystem;
         public void IncreaseHealth(int val)
         {
             currentHealth += val;
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
         }
 
         void ShieldUp()

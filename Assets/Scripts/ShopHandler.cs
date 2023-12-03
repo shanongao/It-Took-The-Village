@@ -162,6 +162,7 @@ public class ShopHandler : MonoBehaviour
                     $"closer to defeating your enemies!!";
             } else
             {
+                canPurchase = false;
                 return $"Ahhh, your powerful {weapons[weapon]} will need ${price} to upgrade!" +
                     $" But you only have ${money}. You must earn more money or try a different weapon!" +
                     $" It's worth it! Go warrior and come back to make yourself even stronger!";
