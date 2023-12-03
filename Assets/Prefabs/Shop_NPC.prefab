@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3543031190712425709
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 188.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 172.36371
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -121.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.90864414
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.4175714
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 310.637
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2947380837484411433, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_Name
+      value: Shop_NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205739516690298201, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205739516690298201, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: dialogueText.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205739516690298201, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: dialogueText.Array.data[0]
+      value: It looks like the monster's leader has built a castle outside the village.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205739516690298201, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: dialogueText.Array.data[1]
+      value: I dare not go there.
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5205739516690298201, guid: e6f9a697b98fb4efa84711f5ad97a70d, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: e6f9a697b98fb4efa84711f5ad97a70d, type: 3}
+--- !u!1 &123362286705655487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3502997042027700818, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3543031190712425709}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1858952391714809540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2947380837484411433, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3543031190712425709}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1733192354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858952391714809540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07d77e0c4591e24e8b90aa43d33a517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompt: {fileID: 123362286705655487}
+  dialogCanvas: {fileID: 0}
+  promptText: Press E to talk to blacksmith about upgrading your weapons
+  currencyText: {fileID: 0}
+  menu: {fileID: 0}
+  prefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currWeapon: {fileID: 0}

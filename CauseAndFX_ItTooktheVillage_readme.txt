@@ -60,16 +60,43 @@ Redesigned the Boss room into a multi-floor dungeon.
 
 Parth Arora:
 
-\Assets\Scripts\equipWeapin.cs
-\Assets\Scripts\GameStarter.cs
-\Assets\Scripts\openScene.cs
-\Assets\Scripts\coin.cs
+Worked on specific aspects of the game, such as:
+- Adding collectibles throughout the scene, such as weapons.
+- Introducing currency to the game by incorporating coins and displaying the current status in the menu.
+- Implementing an inventory and functionality to grab and change equipment.
+- Working on the flow of the game from the lobby to Act 1 and Act 2 by implementing scene changes.
+- Adding functionalities and animations to chests and keys for user interaction.
+- Implementing the entire tutorial, introducing users to every functionality of the game.
+- Adding an NPC blacksmith in Act 2 for upgrading weapons.
+- Adding an NPC healer in Act 2 to heal players before they fight the boss.
 
-Equipment menu and scene changing, collectables. 
-Added after Alpha:
-Added blacksmith for upgrading Weapons
-Added healer for replenishing player's health bar
-Added tutorial UI
+Elements added and worked on:
+- `Assets/Prefabs/Shop_NPC.prefab`
+- `Assets/Prefabs/Healer_NPC.prefab`
+- `Assets/Scenes/Act_2_Intro.unity`
+- `Assets/Scenes/Act_2_Outro.unity`
+- `Assets/Scenes/Lobby.unity`
+- `Assets/Scenes/Tutorial.unity`
+- `Assets/Scripts/coin.cs`
+- `Assets/Scripts/equipWeapon.cs`
+- `Assets/Scripts/ExitGame.cs`
+- `Assets/Scripts/GameStarter.cs`
+- `Assets/Scripts/openScene.cs`
+- `Assets/Scripts/rpg_collectable.cs`
+- `Assets/Scripts/ShopHandler.cs`
+- `Assets/Scripts/HealerHandler.cs`
+- `Assets/Imported/Coin/coin.mat`
+- `Assets/Imported/Coin/Coin.prefab`
+- `Assets/Imported/Coin/coinInner.mat`
+- `Assets/Imported/Weapons/Prefabs/Sword_01.prefab`
+- `Assets/Imported/Weapons/Prefabs/Hammer_01.prefab`
+- `Assets/Imported/Weapons/Prefabs/Ax_01.prefab`
+- `Assets/Imported/Rust Key/Prefabs/rust_key.prefab`
+
+
+
+
+
 
 
 Ruixuan Yu:

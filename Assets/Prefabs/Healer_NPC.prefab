@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4436313736551728895
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 196.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 172.36371
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -116.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9105485
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.41340235
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 408.837
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570680098239635603, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2947380837484411433, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_Name
+      value: Healer_NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205739516690298201, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205739516690298201, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: dialogueText.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205739516690298201, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: dialogueText.Array.data[0]
+      value: It looks like the monster's leader has built a castle outside the village.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205739516690298201, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+        type: 3}
+      propertyPath: dialogueText.Array.data[1]
+      value: I dare not go there.
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5205739516690298201, guid: e6f9a697b98fb4efa84711f5ad97a70d, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: e6f9a697b98fb4efa84711f5ad97a70d, type: 3}
+--- !u!1 &940643840012068013 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3502997042027700818, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4436313736551728895}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1546916755142032598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2947380837484411433, guid: e6f9a697b98fb4efa84711f5ad97a70d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4436313736551728895}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1435379468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546916755142032598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74f8a79348b694b42ac886e76adb295a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompt: {fileID: 940643840012068013}
+  dialogCanvas: {fileID: 0}
+  promptText: Press E to talk
+  healthIncreaseText: Ahh, it's your lucky day, I am going to boost your health and
+    heal you if you need it! You'll need it! Press Enter to get healed...
+  increaseHealthBy: 10
