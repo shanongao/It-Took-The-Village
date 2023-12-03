@@ -15,7 +15,7 @@ public class ElevatorController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             animator.SetBool("StartElevator", true);
-            UnityEngine.Debug.Log("Elevator Controller is initialized.");
+            // UnityEngine.Debug.Log("Elevator Controller is initialized.");
         }
     }
 
@@ -23,7 +23,7 @@ public class ElevatorController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            UnityEngine.Debug.Log("Player exited the elevator trigger.");
+            // UnityEngine.Debug.Log("Player exited the elevator trigger.");
             animator.SetBool("StartElevator", false);
 
         }

@@ -50,7 +50,6 @@ public class OpenStore : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4) && activeWeapons[3] && prefabs.Length >= 4)
         {
-            Debug.Log("hi");
             InstantiatePrefabAtIndex(3);
         }
     }

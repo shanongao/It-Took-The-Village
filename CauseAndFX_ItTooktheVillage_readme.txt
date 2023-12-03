@@ -18,11 +18,12 @@ ASWD - Walk
 hold left Shift - Run
 Spacebar - Jump
 left mouse click - Attack/Swing
+ASWD + left mouse click - Special Attack (hammer or axe only)
 right mouse click - Block/Raise Shield
 1 - equip hammer
 2 - equip sword
 3 - equip axe
-Q - snap camera to behind player (still in progress)
+Q - snap camera to behind player
 x - open equipment menu, hover mouse and click to select equipment
 ESC - Pause menu
 mouse movement - pan camera
@@ -50,18 +51,32 @@ Shanon Gao:
 
 Boss room prefab, Boss prototype
 \Assets\Scripts\BossEnemyController.cs
+\Assets\Scripts\ElevatorController.cs
 \Assets\Scripts\EnemyAttackPower.cs
 \Assets\Animations\BossAnimator
 
+Added after Alpha:
+Redesigned the Boss room into a multi-floor dungeon.
+
 Parth Arora:
 
+\Assets\Scripts\equipWeapin.cs
 \Assets\Scripts\GameStarter.cs
 \Assets\Scripts\openScene.cs
 \Assets\Scripts\coin.cs
+
 Equipment menu and scene changing, collectables. 
+Added after Alpha:
+Added blacksmith for upgrading Weapons
+Added healer for replenishing player's health bar
+Added tutorial UI
+
 
 Ruixuan Yu:
 
+\Assets\Scripts\BGMManager.cs
+\Assets\Scripts\BossEnemyController.cs
+\Assets\Scripts\BossEnemyController.cs
 \Assets\Scripts\NPCDialogHandler.cs
 \Assets\Scripts\DamageCalculator.cs
 \Assets\Scripts\DialogBoxController.cs
@@ -72,17 +87,36 @@ Ruixuan Yu:
 \Assets\Scripts\EnemySlimeController.cs
 \Assets\Scripts\NewPlayerController.cs
 \Assets\Scripts\NPCDialogHandler.cs
+\Assets\Scripts\ShieldDefense.cs
+\Assets\Scripts\WalkingNPCDialogHandler.cs
+\Assets\Scripts\WeaponAttackPower.cs
 \Assets\Animations\BossAnimator.controller
 \Assets\Prefabs\Enemies\EnemyPlant.prefab
 \Assets\Prefabs\Enemies\EnemySkeleton.prefab
 \Assets\Prefabs\Enemies\EnemySlime.prefab
 \Assets\Prefabs\NPC\
 \Assets\Prefabs\UI\
-\Assets\Prefabs\PlayerBody.prefab
+\Assets\Prefabs\NewPlayerBody.prefab
+\Assets\Imported\Character\Animations\Combat.mask
+\Assets\Imported\Character\Animations\EnemyPlantController.controller
+\Assets\Imported\Character\Animations\NewPlayerAnimator.controller
+\Assets\Imported\Character\Animations\NewPlayerNonCombatAnimator.controller
+\Assets\Imported\Character\Animations\Sick.mask
+\Assets\Imported\Character\Animations\VillagerAnimator.controller
+\Assets\Imported\Character\Animations\VillagerOldAnimator.controller
+\Assets\Imported\Character\Animations\VillagerSickAnimator.controller
+\Assets\Imported\Character\Animations\VillagerSickWalkingAnimator.controller
+\Assets\Imported\Character\Animations\VillagerWalkingAnimator.controller
 
 Built original basic action demo that started the project.
 Provided bulk of character and enemy controller development, animations, and alpha core gameplay. 
-
+Added after Alpha:
+Added unique animations for special attacks
+Fixed awkward walking and running animations for player model
+Added health bars for enemies
+Added detection FOV for enemies
+For walking NPCs, stop walking animation and turn to face the player when talking
+Added music to overworld, dungeon, and boss fight
 
 Greg Frantzen:
 
@@ -91,6 +125,8 @@ Greg Frantzen:
 \Assets\Scripts\DialogBoxController.cs
 \Assets\Scripts\Door.cs
 World interaction prototyping. NPC dialogue.  
+Added after Alpha:
+Added dialogs to walking NPCs
 
 Daniel Layson:
 
@@ -102,8 +138,11 @@ Daniel Layson:
 \Assets\Prefabs\House Root
 \Assets\Terrains\Terrain\*
 \Assets\Textures\*
+
 Level design, requirement direction, early prototyping, textures, terain, story and concept.
 Considerable early vision work that did not make the alpha as others were assigned to make better versions.
-
+Added after Alpha:
+Redesigned levels
+Added tutorial level
 
 

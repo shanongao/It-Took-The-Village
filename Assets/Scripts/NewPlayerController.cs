@@ -208,7 +208,7 @@ using UnityEngine.InputSystem;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
             _playerInput = GetComponent<PlayerInput>();
 #else
-			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
+			// Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
 
             AssignAnimationIDs();
@@ -795,8 +795,6 @@ using UnityEngine.InputSystem;
                 axe.GetComponent<BoxCollider>().enabled = true;
                 _attacking = axe.GetComponent<WeaponAttackPower>().attackPower;
             }
-            
-            Debug.Log(_attacking);
         }
 
         void OnAxeSwing()
@@ -805,7 +803,6 @@ using UnityEngine.InputSystem;
             GameObject axe = AxeHolder.transform.GetChild(0).gameObject;
             axe.GetComponent<BoxCollider>().enabled = true;
             _attacking = axe.GetComponent<WeaponAttackPower>().attackPower;
-            Debug.Log(_attacking);
         }
 
         void OnAxeRoundSwing()
@@ -816,7 +813,6 @@ using UnityEngine.InputSystem;
             BoxCollider collider = axe.GetComponent<BoxCollider>();
             collider.size = new Vector3(collider.size.x, 3f, collider.size.z*1.5f);
             _attacking = Mathf.RoundToInt(axe.GetComponent<WeaponAttackPower>().attackPower * 1.2f);
-            Debug.Log(_attacking);
         }
 
         void OnHammerStrike()
@@ -825,7 +821,6 @@ using UnityEngine.InputSystem;
             GameObject hammer = HammerHolder.transform.GetChild(0).gameObject;
             hammer.GetComponent<BoxCollider>().enabled = true;
             _attacking = hammer.GetComponent<WeaponAttackPower>().attackPower;
-            Debug.Log(_attacking);
         }
 
         void OnHammerJumpStrike()
@@ -836,7 +831,6 @@ using UnityEngine.InputSystem;
             BoxCollider collider = hammer.GetComponent<BoxCollider>();
             collider.size = new Vector3(collider.size.x, collider.size.y*2f, collider.size.z*2f);
             _attacking = Mathf.RoundToInt(hammer.GetComponent<WeaponAttackPower>().attackPower * 1.5f);
-            Debug.Log(_attacking);
         }
 
         void OnEndAttack()
